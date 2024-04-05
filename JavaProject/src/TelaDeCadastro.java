@@ -217,6 +217,9 @@ public class TelaDeCadastro extends javax.swing.JFrame {
 
     private void CadastrarTela2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarTela2ActionPerformed
         
+        TelaDeLogin tela1 = new TelaDeLogin();
+        tela1.setVisible(true);
+        dispose();
     }//GEN-LAST:event_CadastrarTela2ActionPerformed
 
     /**
