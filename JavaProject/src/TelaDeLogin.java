@@ -42,6 +42,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
         SemConta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Login");
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(255, 255, 102));
         setIconImages(null);
@@ -52,7 +53,6 @@ public class TelaDeLogin extends javax.swing.JFrame {
         Login.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         Login.setText("Login");
         getContentPane().add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 100, -1));
-        Login.getAccessibleContext().setAccessibleName("Login");
 
         InsertEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -68,7 +68,6 @@ public class TelaDeLogin extends javax.swing.JFrame {
         SuaSenha.setText("Sua Senha");
         SuaSenha.setToolTipText("");
         getContentPane().add(SuaSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
-        SuaSenha.getAccessibleContext().setAccessibleName("Sua Senha");
 
         Logar.setText("Logar");
         Logar.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +125,9 @@ public class TelaDeLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_LogarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        TelaDeCadastro tela2 = new TelaDeCadastro();
+        tela2.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
