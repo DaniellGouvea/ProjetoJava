@@ -33,8 +33,8 @@ public class TelaDeCadastro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         InsertNomeC = new javax.swing.JTextField();
         InsertEmailC = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        InsertSenhaC = new javax.swing.JPasswordField();
+        InsertConfSenhaC = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -79,14 +79,34 @@ public class TelaDeCadastro extends javax.swing.JFrame {
             }
         });
 
-        jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        InsertSenhaC.setForeground(new java.awt.Color(153, 153, 153));
+        InsertSenhaC.setText("Senha");
+        InsertSenhaC.setEchoChar('\u0000');
+        InsertSenhaC.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                InsertSenhaCFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                InsertSenhaCFocusLost(evt);
+            }
+        });
+        InsertSenhaC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                InsertSenhaCActionPerformed(evt);
             }
         });
 
-        jPasswordField2.setText("jPasswordField1");
+        InsertConfSenhaC.setForeground(new java.awt.Color(153, 153, 153));
+        InsertConfSenhaC.setText("Confirmar Senha");
+        InsertConfSenhaC.setEchoChar('\u0000');
+        InsertConfSenhaC.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                InsertConfSenhaCFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                InsertConfSenhaCFocusLost(evt);
+            }
+        });
 
         jLabel2.setText("Nome:");
 
@@ -116,8 +136,8 @@ public class TelaDeCadastro extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(InsertNomeC)
                                 .addComponent(InsertEmailC)
-                                .addComponent(jPasswordField1)
-                                .addComponent(jPasswordField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(InsertSenhaC)
+                                .addComponent(InsertConfSenhaC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
@@ -145,11 +165,11 @@ public class TelaDeCadastro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGap(2, 2, 2)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(InsertSenhaC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(3, 3, 3)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(InsertConfSenhaC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(CadastrarTela2)
                 .addContainerGap(21, Short.MAX_VALUE))
@@ -189,9 +209,9 @@ public class TelaDeCadastro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_InsertEmailCActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void InsertSenhaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertSenhaCActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_InsertSenhaCActionPerformed
 
     private void InsertEmailCFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEmailCFocusGained
         
@@ -221,6 +241,70 @@ public class TelaDeCadastro extends javax.swing.JFrame {
         tela1.setVisible(true);
         dispose();
     }//GEN-LAST:event_CadastrarTela2ActionPerformed
+
+    private void InsertSenhaCFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertSenhaCFocusGained
+        
+        if(new String (InsertSenhaC.getPassword()).equals("Senha")){
+        
+            InsertSenhaC.setText(null);
+            InsertSenhaC.requestFocus();
+            
+            InsertSenhaC.setEchoChar('*');
+            
+            InsertSenhaC.setForeground(new Color(0, 0, 0));
+        
+        }
+        
+    }//GEN-LAST:event_InsertSenhaCFocusGained
+
+    private void InsertSenhaCFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertSenhaCFocusLost
+        
+        if(new String (InsertSenhaC.getPassword()).equals("")){
+        
+            InsertSenhaC.setText("Senha");
+            InsertSenhaC.setForeground(new Color(0, 0, 0));
+            
+        }
+        if(new String (InsertSenhaC.getPassword()).equals("Senha")){
+        
+            InsertSenhaC.setEchoChar('\u0000');
+            InsertSenhaC.setForeground(new Color(153, 153, 153));
+            
+        }
+        
+    }//GEN-LAST:event_InsertSenhaCFocusLost
+
+    private void InsertConfSenhaCFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertConfSenhaCFocusGained
+        
+        if(new String (InsertConfSenhaC.getPassword()).equals("Confirmar Senha")){
+        
+            InsertConfSenhaC.setText(null);
+            InsertConfSenhaC.requestFocus();
+            
+            InsertConfSenhaC.setEchoChar('*');
+            
+            InsertConfSenhaC.setForeground(new Color(0, 0, 0));
+        
+        }
+        
+    }//GEN-LAST:event_InsertConfSenhaCFocusGained
+
+    private void InsertConfSenhaCFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertConfSenhaCFocusLost
+        
+        if(new String (InsertConfSenhaC.getPassword()).equals("")){
+        
+            InsertConfSenhaC.setText("Confirmar Senha");
+            InsertConfSenhaC.setForeground(new Color(0, 0, 0));
+            
+        }
+        if(new String (InsertConfSenhaC.getPassword()).equals("Confirmar Senha")){
+        
+            InsertConfSenhaC.setEchoChar('\u0000');
+            InsertConfSenhaC.setForeground(new Color(153, 153, 153));
+            
+        }
+        
+    }//GEN-LAST:event_InsertConfSenhaCFocusLost
 
     /**
      * @param args the command line arguments
@@ -259,14 +343,14 @@ public class TelaDeCadastro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CadastrarTela2;
+    private javax.swing.JPasswordField InsertConfSenhaC;
     private javax.swing.JTextField InsertEmailC;
     private javax.swing.JTextField InsertNomeC;
+    private javax.swing.JPasswordField InsertSenhaC;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
     // End of variables declaration//GEN-END:variables
 }

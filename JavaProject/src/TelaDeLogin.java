@@ -54,12 +54,40 @@ public class TelaDeLogin extends javax.swing.JFrame {
         Login.setText("Login");
         getContentPane().add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 100, -1));
 
+        InsertEmail.setForeground(new java.awt.Color(153, 153, 153));
+        InsertEmail.setText("Email");
+        InsertEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                InsertEmailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                InsertEmailFocusLost(evt);
+            }
+        });
         InsertEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 InsertEmailActionPerformed(evt);
             }
         });
         getContentPane().add(InsertEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 300, -1));
+
+        InsertSenha.setForeground(new java.awt.Color(153, 153, 153));
+        InsertSenha.setText("Senha");
+        InsertSenha.setDragEnabled(true);
+        InsertSenha.setEchoChar('\u0000');
+        InsertSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                InsertSenhaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                InsertSenhaFocusLost(evt);
+            }
+        });
+        InsertSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InsertSenhaActionPerformed(evt);
+            }
+        });
         getContentPane().add(InsertSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 300, -1));
 
         SeuEmail.setText("Seu Email");
@@ -129,6 +157,63 @@ public class TelaDeLogin extends javax.swing.JFrame {
         tela2.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void InsertEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEmailFocusGained
+        
+        if(InsertEmail.getText().equals("Email")){
+        
+            InsertEmail.setText("");
+            InsertEmail.setForeground(new Color(0, 0, 0));
+        
+        }
+    }//GEN-LAST:event_InsertEmailFocusGained
+
+    private void InsertEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEmailFocusLost
+        
+        if(InsertEmail.getText().equals("")){
+        
+            InsertEmail.setText("Email");
+            InsertEmail.setForeground(new Color(153, 153, 153));
+        
+        }
+        
+    }//GEN-LAST:event_InsertEmailFocusLost
+
+    private void InsertSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertSenhaFocusGained
+        
+        if(new String (InsertSenha.getPassword()).equals("Senha")){
+        
+            InsertSenha.setText(null);
+            InsertSenha.requestFocus();
+            
+            InsertSenha.setEchoChar('*');
+            
+            InsertSenha.setForeground(new Color(0, 0, 0));
+        
+        }
+        
+    }//GEN-LAST:event_InsertSenhaFocusGained
+
+    private void InsertSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertSenhaFocusLost
+        
+        if(new String (InsertSenha.getPassword()).equals("")){
+        
+            InsertSenha.setText("Senha");
+            InsertSenha.setForeground(new Color(0, 0, 0));
+            
+        }
+        if(new String(InsertSenha.getPassword()).equals("Senha")){
+        
+            InsertSenha.setEchoChar('\u0000');
+            InsertSenha.setForeground(new Color(153, 153, 153));
+            
+        }
+        
+    }//GEN-LAST:event_InsertSenhaFocusLost
+
+    private void InsertSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InsertSenhaActionPerformed
 
     /**
      * @param args the command line arguments
