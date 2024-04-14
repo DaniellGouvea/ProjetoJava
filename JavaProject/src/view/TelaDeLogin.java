@@ -1,6 +1,7 @@
 package view;
 
 
+import controller.TelaDeLoginController;
 import java.sql.Connection;
 import dao.Conexao;
 import view.TelaDeCadastro;
@@ -9,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 //
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -21,13 +24,15 @@ import java.util.logging.Logger;
  */
 public class TelaDeLogin extends javax.swing.JFrame {
 
+    private final TelaDeLoginController controller;
+
     /**
      * Creates new form TelaDeLogin
      */
     public TelaDeLogin() {
         initComponents();
         getContentPane().setBackground(new java.awt.Color(204, 204, 255));
-
+        controller = new TelaDeLoginController(this);
 
     }
 
@@ -47,7 +52,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
         SuaSenha = new javax.swing.JLabel();
         Logar = new javax.swing.JButton();
         Footer = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        Cadastrar = new javax.swing.JButton();
         SemConta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -116,10 +121,10 @@ public class TelaDeLogin extends javax.swing.JFrame {
 
         Footer.setBackground(new java.awt.Color(153, 153, 255));
 
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Cadastrar.setText("Cadastrar");
+        Cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                CadastrarActionPerformed(evt);
             }
         });
 
@@ -134,7 +139,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
                 .addContainerGap(183, Short.MAX_VALUE)
                 .addComponent(SemConta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(Cadastrar)
                 .addGap(9, 9, 9))
         );
         FooterLayout.setVerticalGroup(
@@ -142,7 +147,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FooterLayout.createSequentialGroup()
                 .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(FooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(Cadastrar)
                     .addComponent(SemConta))
                 .addGap(17, 17, 17))
         );
@@ -159,27 +164,17 @@ public class TelaDeLogin extends javax.swing.JFrame {
 
     private void LogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogarActionPerformed
         try {
-            Connection conexao = (Connection) new Conexao().getConnection();
-            
-            String sql = "insert into usuario(nome_usuario,email,senha) values ('André', 'luizlino@gmail.com', '123456789')";
-            
-            PreparedStatement statement = conexao.prepareStatement(sql);
-            
-            statement.execute();
-            
-            conexao.close();
-            
-            
+            controller.autenticar();
         } catch (SQLException ex) {
             Logger.getLogger(TelaDeLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_LogarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarActionPerformed
         TelaDeCadastro tela2 = new TelaDeCadastro();
         tela2.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_CadastrarActionPerformed
 
     private void InsertEmailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEmailFocusGained
         
@@ -272,7 +267,26 @@ public class TelaDeLogin extends javax.swing.JFrame {
         });
     }
 
+    public JTextField getInsertEmail() {
+        return InsertEmail;
+    }
+
+    public void setInsertEmail(JTextField InsertEmail) {
+        this.InsertEmail = InsertEmail;
+    }
+
+    public JPasswordField getInsertSenha() {
+        return InsertSenha;
+    }
+
+    public void setInsertSenha(JPasswordField InsertSenha) {
+        this.InsertSenha = InsertSenha;
+    }
+
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Cadastrar;
     private javax.swing.JPanel Footer;
     private javax.swing.JTextField InsertEmail;
     private javax.swing.JPasswordField InsertSenha;
@@ -281,6 +295,5 @@ public class TelaDeLogin extends javax.swing.JFrame {
     private javax.swing.JLabel SemConta;
     private javax.swing.JLabel SeuEmail;
     private javax.swing.JLabel SuaSenha;
-    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

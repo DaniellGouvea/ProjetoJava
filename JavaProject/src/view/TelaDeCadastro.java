@@ -1,5 +1,17 @@
+package view;
 
+
+import controller.TelaDeCadastroController;
+import java.sql.Connection;
+import dao.Conexao;
+import dao.UsuarioDAO;
 import java.awt.Color;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import model.Usuario;
 
 
 
@@ -14,11 +26,12 @@ import java.awt.Color;
  */
 public class TelaDeCadastro extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaDeCadastro
-     */
+    private final TelaDeCadastroController controller;
+    
     public TelaDeCadastro() {
         initComponents();
+        controller = new TelaDeCadastroController(this);
+        
     }
 
     /**
@@ -107,6 +120,11 @@ public class TelaDeCadastro extends javax.swing.JFrame {
                 InsertConfSenhaCFocusLost(evt);
             }
         });
+        InsertConfSenhaC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InsertConfSenhaCActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Nome:");
 
@@ -139,11 +157,11 @@ public class TelaDeCadastro extends javax.swing.JFrame {
                                 .addComponent(InsertSenhaC)
                                 .addComponent(InsertConfSenhaC, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(25, 25, 25)
-                                .addComponent(jLabel1))))
+                                .addComponent(jLabel1))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(140, 140, 140)
                         .addComponent(CadastrarTela2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -236,10 +254,10 @@ public class TelaDeCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_InsertEmailCFocusLost
 
     private void CadastrarTela2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarTela2ActionPerformed
+         controller.salvaUsuario();
         
-        TelaDeLogin tela1 = new TelaDeLogin();
-        tela1.setVisible(true);
-        dispose();
+        
+        
     }//GEN-LAST:event_CadastrarTela2ActionPerformed
 
     private void InsertSenhaCFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertSenhaCFocusGained
@@ -306,6 +324,10 @@ public class TelaDeCadastro extends javax.swing.JFrame {
         
     }//GEN-LAST:event_InsertConfSenhaCFocusLost
 
+    private void InsertConfSenhaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertConfSenhaCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InsertConfSenhaCActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -341,6 +363,39 @@ public class TelaDeCadastro extends javax.swing.JFrame {
         });
     }
 
+    public JTextField getInsertEmailC() {
+        return InsertEmailC;
+    }
+
+    public void setInsertEmailC(JTextField InsertEmailC) {
+        this.InsertEmailC = InsertEmailC;
+    }
+
+    public JTextField getInsertNomeC() {
+        return InsertNomeC;
+    }
+
+    public void setInsertNomeC(JTextField InsertNomeC) {
+        this.InsertNomeC = InsertNomeC;
+    }
+
+    public JPasswordField getInsertSenhaC() {
+        return InsertSenhaC;
+    }
+
+    public void setInsertSenhaC(JPasswordField InsertSenhaC) {
+        this.InsertSenhaC = InsertSenhaC;
+    }
+
+    public JPasswordField getInsertConfSenhaC() {
+        return InsertConfSenhaC;
+    }
+
+    public void setInsertConfSenhaC(JPasswordField InsertConfSenhaC) {
+        this.InsertConfSenhaC = InsertConfSenhaC;
+    }
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CadastrarTela2;
     private javax.swing.JPasswordField InsertConfSenhaC;
