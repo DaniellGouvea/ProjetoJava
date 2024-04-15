@@ -30,7 +30,7 @@ public class TelaDeLoginController {
            UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
            
            
-           boolean existe = usuarioDao.existeNoBancoPorUsuarioESenha(usuarioAutenticar);
+           boolean existe = usuarioDao.existeNoBancoPorEmailESenha(usuarioAutenticar);
            
         
            if(existe){

@@ -51,20 +51,41 @@ public class TelaDeCadastroController {
                             try {
                                 Connection conexao = new Conexao().getConnection();
                                 UsuarioDAO usuariodao = new UsuarioDAO(conexao);
-                                usuariodao.insert(usuario);
+                                
+                                boolean existe = usuariodao.existeNoBancoPorEmail(usuario);
+                                
+                                if(existe) {
+                                
+                                    JOptionPane.showMessageDialog(null, "Email já cadastrado!");
+                                
+                                }else {
+                                    
+                                    
+                                    usuariodao.insert(usuario);
+                                    JOptionPane.showMessageDialog(null, "Usuario Cadastrado com Sucesso!");
+                                    //Abri a Tela de Login
+                                    TelaDeLogin tela1 = new TelaDeLogin();
+                                    tela1.setVisible(true);
+                                    view.dispose();
 
+                                
+                                
+                                }
+                                
                             } catch (SQLException ex) {
                                 Logger.getLogger(TelaDeCadastro.class.getName()).log(Level.SEVERE, null, ex);
                             }
 
-                            JOptionPane.showMessageDialog(null, "Usuario Cadastrado com Sucesso!");
-                            //Abri a Tela de Login
-                            TelaDeLogin tela1 = new TelaDeLogin();
-                            tela1.setVisible(true);
-                            view.dispose();
-
+                            
         }}
     }
     
+    public void voltarTela(){
     
+        TelaDeLogin telaDeLogin = new TelaDeLogin();
+        telaDeLogin.setVisible(true);
+        
+        view.dispose();
+        
+    }
 }

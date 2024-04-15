@@ -34,7 +34,7 @@ public class UsuarioDAO {
             
     }
 
-    public boolean existeNoBancoPorUsuarioESenha(Usuario usuario) throws SQLException {
+    public boolean existeNoBancoPorEmailESenha(Usuario usuario) throws SQLException {
         
         String sql = "select * from usuario where email = ? and senha = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -51,6 +51,19 @@ public class UsuarioDAO {
         return resultSet.next();
     }
     
-    
+    public boolean existeNoBancoPorEmail(Usuario usuario) throws SQLException {
+        
+        String sql = "select * from usuario where email = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        
+        statement.setString(1, usuario.getEmail());
+        
+        statement.execute();
+        
+        ResultSet resultSet = statement.getResultSet();
+        
+        
+        return resultSet.next();
+    }
     
 }
