@@ -22,9 +22,13 @@ public class UsuarioDAO {
     public void insert(Usuario usuario) throws SQLException{
 
             
-            String sql = "insert into usuario(nome_usuario,email,senha) values ('"+usuario.getNomeUsuario()+"', '"+usuario.getEmail()+"', '"+usuario.getSenha()+"')";
+            String sql = "insert into usuario(nome_usuario,email,senha) values (?, ?, ?)";
             
             PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setString(1, usuario.getNomeUsuario());
+            statement.setString(2, usuario.getEmail());
+            statement.setString(3, usuario.getSenha());
             
             statement.execute();
             
@@ -32,8 +36,13 @@ public class UsuarioDAO {
 
     public boolean existeNoBancoPorUsuarioESenha(Usuario usuario) throws SQLException {
         
-        String sql = "select * from usuario where email = '"+usuario.getEmail()+"' and senha = '"+usuario.getSenha()+"'";
+        String sql = "select * from usuario where email = ? and senha = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
+        
+        statement.setString(1, usuario.getEmail());
+        statement.setString(2, usuario.getSenha());
+        
+        
         statement.execute();
         
         ResultSet resultSet = statement.getResultSet();
