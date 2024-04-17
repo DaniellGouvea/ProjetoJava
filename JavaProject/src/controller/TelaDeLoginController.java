@@ -1,15 +1,14 @@
 
 package controller;
 
-import dao.Conexao;
-import dao.UsuarioDAO;
-import model.Usuario;
-import view.MenuTeste;
-import view.TelaDeLogin;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-
+import view.TelaDeLogin;
+import view.TelaDeMenu;
+import dao.Conexao;
+import dao.UsuarioDAO;
+import model.Usuario;
 
 public class TelaDeLoginController {
     
@@ -35,7 +34,7 @@ public class TelaDeLoginController {
         
            if(existe){
                
-               MenuTeste menu = new MenuTeste();
+               TelaDeMenu menu = new TelaDeMenu();
                menu.setVisible(true);
                
                view.dispose();

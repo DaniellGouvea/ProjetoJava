@@ -168,6 +168,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(TelaDeLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_LogarActionPerformed
 
     private void CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarActionPerformed
@@ -296,4 +297,5 @@ public class TelaDeLogin extends javax.swing.JFrame {
     private javax.swing.JLabel SeuEmail;
     private javax.swing.JLabel SuaSenha;
     // End of variables declaration//GEN-END:variables
+
 }
