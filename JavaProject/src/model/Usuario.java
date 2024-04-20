@@ -22,6 +22,15 @@ public class Usuario {
         this.senha = senha;
         this.nomeUsuario = nomeUsuario;
     }
+
+    public Usuario(int idUsuario, String nomeUsuario, String email) {
+        this.idUsuario = idUsuario;
+        this.nomeUsuario = nomeUsuario;
+        this.email = email;
+    }
+    
+    
+    
     
     //Usuario para Login
     public Usuario(String email, String senha) {
@@ -52,6 +61,14 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
     
     

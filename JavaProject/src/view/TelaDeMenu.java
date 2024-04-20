@@ -4,17 +4,36 @@
  */
 package view;
 
+import controller.TelaDeMenuController;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
 /**
  *
  * @author bielg
  */
 public class TelaDeMenu extends javax.swing.JFrame {
 
+    private final TelaDeMenuController controller;
+
+        
     /**
      * Creates new form TelaDeClientes
      */
     public TelaDeMenu() {
         initComponents();
+        controller = new TelaDeMenuController(this);
+        
+        try {
+            controller.adicionarATabela(tabelaUsuario);
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaDeMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
     }
 
     /**
@@ -26,14 +45,37 @@ public class TelaDeMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabelaUsuario = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         GerenciarMenu = new javax.swing.JMenu();
         Cliente = new javax.swing.JMenuItem();
         Estoque = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        tabelaUsuario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "IdUsuario", "Nome", "Email"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tabelaUsuario);
 
         GerenciarMenu.setText("Gerenciar");
         GerenciarMenu.setToolTipText("");
@@ -56,20 +98,23 @@ public class TelaDeMenu extends javax.swing.JFrame {
 
         jMenuBar1.add(GerenciarMenu);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 913, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(191, 191, 191)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 616, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(203, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 425, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(410, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96))
         );
 
         pack();
@@ -77,15 +122,13 @@ public class TelaDeMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteActionPerformed
-        Clientes cliente = new Clientes();
-        cliente.setVisible(true);
+        new Clientes().setVisible(true);
         
         dispose();
     }//GEN-LAST:event_ClienteActionPerformed
 
     private void EstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EstoqueActionPerformed
-        Estoque estoque = new Estoque();
-        estoque.setVisible(true);
+        new Estoque().setVisible(true);
         
         dispose();
     }//GEN-LAST:event_EstoqueActionPerformed
@@ -127,11 +170,28 @@ public class TelaDeMenu extends javax.swing.JFrame {
         });
     }
 
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public void setjScrollPane2(JScrollPane jScrollPane2) {
+        this.jScrollPane2 = jScrollPane2;
+    }
+
+    public JTable getTabelaUsuario() {
+        return tabelaUsuario;
+    }
+
+    public void setTabelaUsuario(JTable tabelaUsuario) {
+        this.tabelaUsuario = tabelaUsuario;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Cliente;
     private javax.swing.JMenuItem Estoque;
     private javax.swing.JMenu GerenciarMenu;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tabelaUsuario;
     // End of variables declaration//GEN-END:variables
 }
