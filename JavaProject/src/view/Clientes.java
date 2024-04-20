@@ -26,15 +26,75 @@ public class Clientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        GerenciarMenu = new javax.swing.JMenu();
+        Cliente = new javax.swing.JMenu();
+        AdicionarCliente = new javax.swing.JMenuItem();
+        AlterarCliente = new javax.swing.JMenuItem();
+        RemoverCliente = new javax.swing.JMenuItem();
+        Estoque = new javax.swing.JMenu();
+        AlterarEstoque = new javax.swing.JMenuItem();
+        AdicionarEstoque = new javax.swing.JMenuItem();
+        RemoverEstoque = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel1.setText("Cliente");
+
+        GerenciarMenu.setText("Gerenciar");
+        GerenciarMenu.setToolTipText("");
+
+        Cliente.setText("Cliente");
+
+        AdicionarCliente.setText("Adicionar");
+        AdicionarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdicionarClienteActionPerformed(evt);
+            }
+        });
+        Cliente.add(AdicionarCliente);
+
+        AlterarCliente.setText("Alterar");
+        Cliente.add(AlterarCliente);
+
+        RemoverCliente.setText("Remover");
+        RemoverCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoverClienteActionPerformed(evt);
+            }
+        });
+        Cliente.add(RemoverCliente);
+
+        GerenciarMenu.add(Cliente);
+
+        Estoque.setText("Estoque");
+
+        AlterarEstoque.setText("Alterar");
+        Estoque.add(AlterarEstoque);
+
+        AdicionarEstoque.setText("Adicionar");
+        AdicionarEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdicionarEstoqueActionPerformed(evt);
+            }
+        });
+        Estoque.add(AdicionarEstoque);
+
+        RemoverEstoque.setText("Remover");
+        RemoverEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoverEstoqueActionPerformed(evt);
+            }
+        });
+        Estoque.add(RemoverEstoque);
+
+        GerenciarMenu.add(Estoque);
+
+        jMenuBar1.add(GerenciarMenu);
 
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
@@ -45,16 +105,38 @@ public class Clientes extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 913, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(335, 335, 335)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(395, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 425, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(103, 103, 103)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(190, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AdicionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AdicionarClienteActionPerformed
+
+    private void RemoverClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoverClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RemoverClienteActionPerformed
+
+    private void AdicionarEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarEstoqueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AdicionarEstoqueActionPerformed
+
+    private void RemoverEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoverEstoqueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RemoverEstoqueActionPerformed
 
     /**
      * @param args the command line arguments
@@ -93,7 +175,16 @@ public class Clientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem AdicionarCliente;
+    private javax.swing.JMenuItem AdicionarEstoque;
+    private javax.swing.JMenuItem AlterarCliente;
+    private javax.swing.JMenuItem AlterarEstoque;
+    private javax.swing.JMenu Cliente;
+    private javax.swing.JMenu Estoque;
+    private javax.swing.JMenu GerenciarMenu;
+    private javax.swing.JMenuItem RemoverCliente;
+    private javax.swing.JMenuItem RemoverEstoque;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
