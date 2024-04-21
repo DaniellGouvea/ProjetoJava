@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 17/04/2024 às 13:25
+-- Tempo de geração: 21/04/2024 às 23:46
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.2.12
 
@@ -35,6 +35,13 @@ CREATE TABLE `cliente` (
   `telefone` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Despejando dados para a tabela `cliente`
+--
+
+INSERT INTO `cliente` (`id_cliente`, `nome`, `endereço`, `cep`, `telefone`) VALUES
+(1, 'Gilberto', 'Rua Dondoca, Rio de Janeiro', 2314422, 219464673);
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +55,13 @@ CREATE TABLE `item_estoque` (
   `nome_fornecedor` varchar(20) NOT NULL,
   `valor` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Despejando dados para a tabela `item_estoque`
+--
+
+INSERT INTO `item_estoque` (`id_item`, `nome_item`, `nome_modelo`, `nome_fornecedor`, `valor`) VALUES
+(1, 'Jade', 'tanga', 'joãozinho', 5.6);
 
 -- --------------------------------------------------------
 
@@ -68,7 +82,8 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `nome_usuario`, `email`, `senha`) VALUES
 (1, 'admin', 'admin@', 'admin@123'),
-(2, 'Daniel', 'luizdanielsgouvea@gmail.com', 'LdPa0408');
+(2, 'Daniel', 'luizdanielsgouvea@gmail.com', 'LdPa0408'),
+(5, 'joãozinho', 'joão@', 'joaojoao');
 
 --
 -- Índices para tabelas despejadas
@@ -100,19 +115,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `item_estoque`
 --
 ALTER TABLE `item_estoque`
-  MODIFY `id_item` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_item` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_usuario` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
