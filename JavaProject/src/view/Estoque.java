@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -46,21 +47,21 @@ public class Estoque extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        InsertNomeC = new javax.swing.JTextField();
+        InsertNomeProduto = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        InsertEmailC = new javax.swing.JTextField();
+        InsertPrecoProduto = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        InsertEmailC2 = new javax.swing.JTextField();
+        InsertQtdProduto = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        InsertEmailC3 = new javax.swing.JTextField();
+        InsertModeloProduto = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnAdicionar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         TabelaEstoque = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
-        InsertEmailC4 = new javax.swing.JTextField();
+        InsertFornecedorProduto = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,93 +71,93 @@ public class Estoque extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Nome:");
 
-        InsertNomeC.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        InsertNomeC.setForeground(new java.awt.Color(153, 153, 153));
-        InsertNomeC.setText("Nome do Produto");
-        InsertNomeC.addFocusListener(new java.awt.event.FocusAdapter() {
+        InsertNomeProduto.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        InsertNomeProduto.setForeground(new java.awt.Color(153, 153, 153));
+        InsertNomeProduto.setText("Nome");
+        InsertNomeProduto.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                InsertNomeCFocusGained(evt);
+                InsertNomeProdutoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                InsertNomeCFocusLost(evt);
+                InsertNomeProdutoFocusLost(evt);
             }
         });
-        InsertNomeC.addActionListener(new java.awt.event.ActionListener() {
+        InsertNomeProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InsertNomeCActionPerformed(evt);
+                InsertNomeProdutoActionPerformed(evt);
             }
         });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Preço:");
 
-        InsertEmailC.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        InsertEmailC.setForeground(new java.awt.Color(153, 153, 153));
-        InsertEmailC.setText("Preço do Produto");
-        InsertEmailC.addFocusListener(new java.awt.event.FocusAdapter() {
+        InsertPrecoProduto.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        InsertPrecoProduto.setForeground(new java.awt.Color(153, 153, 153));
+        InsertPrecoProduto.setText("Preço");
+        InsertPrecoProduto.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                InsertEmailCFocusGained(evt);
+                InsertPrecoProdutoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                InsertEmailCFocusLost(evt);
+                InsertPrecoProdutoFocusLost(evt);
             }
         });
-        InsertEmailC.addActionListener(new java.awt.event.ActionListener() {
+        InsertPrecoProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InsertEmailCActionPerformed(evt);
+                InsertPrecoProdutoActionPerformed(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Quantidade:");
 
-        InsertEmailC2.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        InsertEmailC2.setForeground(new java.awt.Color(153, 153, 153));
-        InsertEmailC2.setText("Quantidade do Produto");
-        InsertEmailC2.addFocusListener(new java.awt.event.FocusAdapter() {
+        InsertQtdProduto.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        InsertQtdProduto.setForeground(new java.awt.Color(153, 153, 153));
+        InsertQtdProduto.setText("Quantidade");
+        InsertQtdProduto.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                InsertEmailC2FocusGained(evt);
+                InsertQtdProdutoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                InsertEmailC2FocusLost(evt);
+                InsertQtdProdutoFocusLost(evt);
             }
         });
-        InsertEmailC2.addActionListener(new java.awt.event.ActionListener() {
+        InsertQtdProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InsertEmailC2ActionPerformed(evt);
+                InsertQtdProdutoActionPerformed(evt);
             }
         });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Modelo:");
 
-        InsertEmailC3.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        InsertEmailC3.setForeground(new java.awt.Color(153, 153, 153));
-        InsertEmailC3.setText("Categoria do Produto");
-        InsertEmailC3.addFocusListener(new java.awt.event.FocusAdapter() {
+        InsertModeloProduto.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        InsertModeloProduto.setForeground(new java.awt.Color(153, 153, 153));
+        InsertModeloProduto.setText("Modelo");
+        InsertModeloProduto.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                InsertEmailC3FocusGained(evt);
+                InsertModeloProdutoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                InsertEmailC3FocusLost(evt);
+                InsertModeloProdutoFocusLost(evt);
             }
         });
-        InsertEmailC3.addActionListener(new java.awt.event.ActionListener() {
+        InsertModeloProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InsertEmailC3ActionPerformed(evt);
+                InsertModeloProdutoActionPerformed(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 20)); // NOI18N
         jLabel2.setText("TABELA DE ESTOQUE");
 
-        jButton2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jButton2.setText("Adicionar");
-        jButton2.setAlignmentY(0.0F);
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAdicionar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        btnAdicionar.setText("Adicionar");
+        btnAdicionar.setAlignmentY(0.0F);
+        btnAdicionar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAdicionarActionPerformed(evt);
             }
         });
 
@@ -182,17 +183,17 @@ public class Estoque extends javax.swing.JFrame {
 
         TabelaEstoque.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Id_item", "Nome", "Modelo", "Fornecedor", "Valor"
+                "Id_item", "Nome", "Modelo", "Fornecedor", "Valor", "Qtd"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -204,20 +205,20 @@ public class Estoque extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Fornecedor:");
 
-        InsertEmailC4.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        InsertEmailC4.setForeground(new java.awt.Color(153, 153, 153));
-        InsertEmailC4.setText("Fornecedor do Produto");
-        InsertEmailC4.addFocusListener(new java.awt.event.FocusAdapter() {
+        InsertFornecedorProduto.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        InsertFornecedorProduto.setForeground(new java.awt.Color(153, 153, 153));
+        InsertFornecedorProduto.setText("Fornecedor");
+        InsertFornecedorProduto.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                InsertEmailC4FocusGained(evt);
+                InsertFornecedorProdutoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                InsertEmailC4FocusLost(evt);
+                InsertFornecedorProdutoFocusLost(evt);
             }
         });
-        InsertEmailC4.addActionListener(new java.awt.event.ActionListener() {
+        InsertFornecedorProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InsertEmailC4ActionPerformed(evt);
+                InsertFornecedorProdutoActionPerformed(evt);
             }
         });
 
@@ -229,20 +230,20 @@ public class Estoque extends javax.swing.JFrame {
                 .addGap(94, 94, 94)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(InsertNomeC)
-                    .addComponent(InsertEmailC2)
-                    .addComponent(InsertEmailC3)
+                    .addComponent(InsertNomeProduto)
+                    .addComponent(InsertQtdProduto)
+                    .addComponent(InsertModeloProduto)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
-                    .addComponent(InsertEmailC4)
-                    .addComponent(InsertEmailC)
+                    .addComponent(InsertFornecedorProduto)
+                    .addComponent(InsertPrecoProduto)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -260,7 +261,7 @@ public class Estoque extends javax.swing.JFrame {
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -271,23 +272,23 @@ public class Estoque extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel3)
                 .addGap(4, 4, 4)
-                .addComponent(InsertNomeC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(InsertNomeProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addGap(5, 5, 5)
-                .addComponent(InsertEmailC3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(InsertModeloProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addGap(5, 5, 5)
-                .addComponent(InsertEmailC4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(InsertFornecedorProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(InsertEmailC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(InsertPrecoProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addGap(5, 5, 5)
-                .addComponent(InsertEmailC2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(InsertQtdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -295,81 +296,108 @@ public class Estoque extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void InsertNomeCFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertNomeCFocusGained
+    private void InsertNomeProdutoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertNomeProdutoFocusGained
 
-        if(InsertNomeC.getText().equals("Nome Completo")){
+        if(InsertNomeProduto.getText().equals("Nome")){
 
-            InsertNomeC.setText("");
-            InsertNomeC.setForeground(new Color(0, 0, 0));
-
-        }
-    }//GEN-LAST:event_InsertNomeCFocusGained
-
-    private void InsertNomeCFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertNomeCFocusLost
-
-        if(InsertNomeC.getText().equals("")){
-
-            InsertNomeC.setText("Nome Completo");
-            InsertNomeC.setForeground(new Color(153, 153, 153));
+            InsertNomeProduto.setText("");
+            InsertNomeProduto.setForeground(new Color(0, 0, 0));
 
         }
-    }//GEN-LAST:event_InsertNomeCFocusLost
+    }//GEN-LAST:event_InsertNomeProdutoFocusGained
 
-    private void InsertNomeCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertNomeCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InsertNomeCActionPerformed
+    private void InsertNomeProdutoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertNomeProdutoFocusLost
 
-    private void InsertEmailCFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEmailCFocusGained
+        if(InsertNomeProduto.getText().equals("")){
 
-        if(InsertEmailC.getText().equals("Email")){
-
-            InsertEmailC.setText("");
-            InsertEmailC.setForeground(new Color(0, 0, 0));
+            InsertNomeProduto.setText("Nome");
+            InsertNomeProduto.setForeground(new Color(153, 153, 153));
 
         }
-    }//GEN-LAST:event_InsertEmailCFocusGained
+    }//GEN-LAST:event_InsertNomeProdutoFocusLost
 
-    private void InsertEmailCFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEmailCFocusLost
+    private void InsertNomeProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertNomeProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InsertNomeProdutoActionPerformed
 
-        if(InsertEmailC.getText().equals("")){
+    private void InsertPrecoProdutoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertPrecoProdutoFocusGained
 
-            InsertEmailC.setText("Email");
-            InsertEmailC.setForeground(new Color(153, 153, 153));
+        if(InsertPrecoProduto.getText().equals("Preço")){
+
+            InsertPrecoProduto.setText("");
+            InsertPrecoProduto.setForeground(new Color(0, 0, 0));
 
         }
-    }//GEN-LAST:event_InsertEmailCFocusLost
+    }//GEN-LAST:event_InsertPrecoProdutoFocusGained
 
-    private void InsertEmailCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertEmailCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InsertEmailCActionPerformed
+    private void InsertPrecoProdutoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertPrecoProdutoFocusLost
 
-    private void InsertEmailC2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEmailC2FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InsertEmailC2FocusGained
+        if(InsertPrecoProduto.getText().equals("")){
 
-    private void InsertEmailC2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEmailC2FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InsertEmailC2FocusLost
+            InsertPrecoProduto.setText("Preço");
+            InsertPrecoProduto.setForeground(new Color(153, 153, 153));
 
-    private void InsertEmailC2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertEmailC2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InsertEmailC2ActionPerformed
+        }
+    }//GEN-LAST:event_InsertPrecoProdutoFocusLost
 
-    private void InsertEmailC3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEmailC3FocusGained
+    private void InsertPrecoProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertPrecoProdutoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_InsertEmailC3FocusGained
+    }//GEN-LAST:event_InsertPrecoProdutoActionPerformed
 
-    private void InsertEmailC3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEmailC3FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InsertEmailC3FocusLost
+    private void InsertQtdProdutoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertQtdProdutoFocusGained
+        if(InsertQtdProduto.getText().equals("Quantidade")){
 
-    private void InsertEmailC3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertEmailC3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InsertEmailC3ActionPerformed
+            InsertQtdProduto.setText("");
+            InsertQtdProduto.setForeground(new Color(0, 0, 0));
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        }
+    }//GEN-LAST:event_InsertQtdProdutoFocusGained
+
+    private void InsertQtdProdutoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertQtdProdutoFocusLost
+        if(InsertQtdProduto.getText().equals("")){
+
+            InsertQtdProduto.setText("Quantidade");
+            InsertQtdProduto.setForeground(new Color(153, 153, 153));
+
+        }
+    }//GEN-LAST:event_InsertQtdProdutoFocusLost
+
+    private void InsertQtdProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertQtdProdutoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_InsertQtdProdutoActionPerformed
+
+    private void InsertModeloProdutoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertModeloProdutoFocusGained
+        if(InsertModeloProduto.getText().equals("Modelo")){
+
+            InsertModeloProduto.setText("");
+            InsertModeloProduto.setForeground(new Color(0, 0, 0));
+
+        }
+    }//GEN-LAST:event_InsertModeloProdutoFocusGained
+
+    private void InsertModeloProdutoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertModeloProdutoFocusLost
+        if(InsertModeloProduto.getText().equals("")){
+
+            InsertModeloProduto.setText("Modelo");
+            InsertModeloProduto.setForeground(new Color(153, 153, 153));
+
+        }
+    }//GEN-LAST:event_InsertModeloProdutoFocusLost
+
+    private void InsertModeloProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertModeloProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InsertModeloProdutoActionPerformed
+
+    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
+        
+        try {
+            controller.SalvarCliente();
+            controller.adicionarATabela(TabelaEstoque);
+        } catch (SQLException ex) {
+            Logger.getLogger(Estoque.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -379,17 +407,27 @@ public class Estoque extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void InsertEmailC4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEmailC4FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InsertEmailC4FocusGained
+    private void InsertFornecedorProdutoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertFornecedorProdutoFocusGained
+        if(InsertFornecedorProduto.getText().equals("Fornecedor")){
 
-    private void InsertEmailC4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEmailC4FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InsertEmailC4FocusLost
+            InsertFornecedorProduto.setText("");
+            InsertFornecedorProduto.setForeground(new Color(0, 0, 0));
 
-    private void InsertEmailC4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertEmailC4ActionPerformed
+        }
+    }//GEN-LAST:event_InsertFornecedorProdutoFocusGained
+
+    private void InsertFornecedorProdutoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertFornecedorProdutoFocusLost
+        if(InsertFornecedorProduto.getText().equals("")){
+
+            InsertFornecedorProduto.setText("Fornecedor");
+            InsertFornecedorProduto.setForeground(new Color(153, 153, 153));
+
+        }
+    }//GEN-LAST:event_InsertFornecedorProdutoFocusLost
+
+    private void InsertFornecedorProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertFornecedorProdutoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_InsertEmailC4ActionPerformed
+    }//GEN-LAST:event_InsertFornecedorProdutoActionPerformed
 
     public JTable getTabelaEstoque() {
         return TabelaEstoque;
@@ -397,6 +435,46 @@ public class Estoque extends javax.swing.JFrame {
 
     public void setTabelaEstoque(JTable TabelaEstoque) {
         this.TabelaEstoque = TabelaEstoque;
+    }
+
+    public JTextField getInsertFornecedorProduto() {
+        return InsertFornecedorProduto;
+    }
+
+    public void setInsertFornecedorProduto(JTextField InsertFornecedorProduto) {
+        this.InsertFornecedorProduto = InsertFornecedorProduto;
+    }
+
+    public JTextField getInsertModeloProduto() {
+        return InsertModeloProduto;
+    }
+
+    public void setInsertModeloProduto(JTextField InsertModeloProduto) {
+        this.InsertModeloProduto = InsertModeloProduto;
+    }
+
+    public JTextField getInsertNomeProduto() {
+        return InsertNomeProduto;
+    }
+
+    public void setInsertNomeProduto(JTextField InsertNomeProduto) {
+        this.InsertNomeProduto = InsertNomeProduto;
+    }
+
+    public JTextField getInsertPrecoProduto() {
+        return InsertPrecoProduto;
+    }
+
+    public void setInsertPrecoProduto(JTextField InsertPrecoProduto) {
+        this.InsertPrecoProduto = InsertPrecoProduto;
+    }
+
+    public JTextField getInsertQtdProduto() {
+        return InsertQtdProduto;
+    }
+
+    public void setInsertQtdProduto(JTextField InsertQtdProduto) {
+        this.InsertQtdProduto = InsertQtdProduto;
     }
     
     
@@ -441,14 +519,14 @@ public class Estoque extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField InsertEmailC;
-    private javax.swing.JTextField InsertEmailC2;
-    private javax.swing.JTextField InsertEmailC3;
-    private javax.swing.JTextField InsertEmailC4;
-    private javax.swing.JTextField InsertNomeC;
+    private javax.swing.JTextField InsertFornecedorProduto;
+    private javax.swing.JTextField InsertModeloProduto;
+    private javax.swing.JTextField InsertNomeProduto;
+    private javax.swing.JTextField InsertPrecoProduto;
+    private javax.swing.JTextField InsertQtdProduto;
     private javax.swing.JTable TabelaEstoque;
+    private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

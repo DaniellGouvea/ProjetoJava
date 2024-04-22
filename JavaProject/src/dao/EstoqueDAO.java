@@ -20,14 +20,15 @@ public class EstoqueDAO {
     public void insert(Item_Estoque item_estoque) throws SQLException{
 
             
-            String sql = "insert into item_estoque(nome_item, nome_modelo, nome_fornecedor, valor) values (?, ?, ?, ?)";
+            String sql = "insert into item_estoque(nome_item, nome_modelo, nome_fornecedor, valor, qtd) values (?, ?, ?, ?, ?)";
             
             PreparedStatement statement = connection.prepareStatement(sql);
 
-            statement.setString(1, "Lisa"/*cliente.getNomeUsuario()*/);
-            statement.setString(2, "Tanga"/*cliente.getEmail()*/);
-            statement.setString(3, "Joãozinho da loja"/*cliente.getSenha()*/);
-            statement.setDouble(4, 5.60);
+            statement.setString(1, item_estoque.getNome_Item());
+            statement.setString(2, item_estoque.getModelo());
+            statement.setString(3, item_estoque.getFornecedor());
+            statement.setDouble(4, item_estoque.getValor());
+            statement.setInt(5, item_estoque.getQtd());
             
             statement.execute();
             
@@ -35,7 +36,7 @@ public class EstoqueDAO {
     
     public void update(Item_Estoque item_estoque) throws SQLException{
     
-        String sql = "update item_estoque set nome_item = ?, nome_modelo = ?, nome_fornecedor = ?, valor = ? where id_item = ?";
+        String sql = "update item_estoque set nome_item = ?, nome_modelo = ?, nome_fornecedor = ?, valor = ?, qtd = ? where id_item = ?";
             
         PreparedStatement statement = connection.prepareStatement(sql);
 
@@ -43,7 +44,8 @@ public class EstoqueDAO {
         statement.setString(2, item_estoque.getModelo());
         statement.setString(3, item_estoque.getFornecedor());
         statement.setDouble(4, item_estoque.getValor());
-        statement.setInt(5, item_estoque.getId_Item());
+        statement.setInt(5, item_estoque.getQtd());
+        statement.setInt(6, item_estoque.getId_Item());
 
         statement.execute();
     
@@ -98,9 +100,10 @@ public class EstoqueDAO {
             String nome_item = resultSet.getString("nome_item");
             String nome_modelo = resultSet.getString("nome_modelo");
             String nome_fornecedor = resultSet.getString("nome_fornecedor");
-            Double valor = resultSet.getDouble("valor");
+            double valor = resultSet.getDouble("valor");
+            int qtd = resultSet.getInt("qtd");
         
-            Item_Estoque itemDoBanco = new Item_Estoque(id_item, nome_item, nome_modelo, nome_fornecedor, valor);
+            Item_Estoque itemDoBanco = new Item_Estoque(id_item, nome_item, nome_modelo, nome_fornecedor, valor, qtd);
             clientes.add(itemDoBanco);
             
         }

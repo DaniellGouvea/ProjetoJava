@@ -11,6 +11,7 @@ import model.Cliente;
 import view.Clientes;
 
 
+
 public class ClientesController {
     
     private Clientes view;
@@ -20,7 +21,22 @@ public class ClientesController {
     }
     
     
+    public void SalvarCliente() throws SQLException{
     
+        String nome_cliente = view.getInsertNomeCliente().getText();
+        String endereco = view.getInsertEndCliente().getText();
+        int cep = Integer.parseInt(view.getInsertCepClientes().getText());
+        String telefone = view.getInsertTeleCliente().getText();
+    
+        
+        Cliente cliente = new Cliente(nome_cliente, endereco, cep, telefone);
+        
+        Connection conexao = new Conexao().getConnection();
+        ClienteDAO clientedao = new ClienteDAO(conexao);
+        
+        clientedao.insert(cliente);
+        
+    }
     
     public void adicionarATabela(JTable tabelaClientes) throws SQLException{
     
@@ -42,6 +58,7 @@ public class ClientesController {
                 cliente.getEndereço(),
                 cliente.getCep(),
                 cliente.getTelefone()
+                
             }
             );
             

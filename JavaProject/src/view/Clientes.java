@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -48,14 +49,14 @@ public class Clientes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        InsertNomeC = new javax.swing.JTextField();
+        InsertNomeCliente = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        InsertEmailC = new javax.swing.JTextField();
+        InsertEndCliente = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        InsertEmailC2 = new javax.swing.JTextField();
-        InsertEmailC3 = new javax.swing.JTextField();
+        InsertTeleCliente = new javax.swing.JTextField();
+        InsertCepClientes = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnAdicionar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaClientes = new javax.swing.JTable();
@@ -82,90 +83,90 @@ public class Clientes extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Nome:");
 
-        InsertNomeC.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        InsertNomeC.setForeground(new java.awt.Color(153, 153, 153));
-        InsertNomeC.setText("Nome Completo...");
-        InsertNomeC.addFocusListener(new java.awt.event.FocusAdapter() {
+        InsertNomeCliente.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        InsertNomeCliente.setForeground(new java.awt.Color(153, 153, 153));
+        InsertNomeCliente.setText("Nome Completo");
+        InsertNomeCliente.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                InsertNomeCFocusGained(evt);
+                InsertNomeClienteFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                InsertNomeCFocusLost(evt);
+                InsertNomeClienteFocusLost(evt);
             }
         });
-        InsertNomeC.addActionListener(new java.awt.event.ActionListener() {
+        InsertNomeCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InsertNomeCActionPerformed(evt);
+                InsertNomeClienteActionPerformed(evt);
             }
         });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Endereço:");
 
-        InsertEmailC.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        InsertEmailC.setForeground(new java.awt.Color(153, 153, 153));
-        InsertEmailC.setText("Email...");
-        InsertEmailC.addFocusListener(new java.awt.event.FocusAdapter() {
+        InsertEndCliente.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        InsertEndCliente.setForeground(new java.awt.Color(153, 153, 153));
+        InsertEndCliente.setText("Endereço");
+        InsertEndCliente.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                InsertEmailCFocusGained(evt);
+                InsertEndClienteFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                InsertEmailCFocusLost(evt);
+                InsertEndClienteFocusLost(evt);
             }
         });
-        InsertEmailC.addActionListener(new java.awt.event.ActionListener() {
+        InsertEndCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InsertEmailCActionPerformed(evt);
+                InsertEndClienteActionPerformed(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Telefone:");
 
-        InsertEmailC2.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        InsertEmailC2.setForeground(new java.awt.Color(153, 153, 153));
-        InsertEmailC2.setText("Telefone...");
-        InsertEmailC2.addFocusListener(new java.awt.event.FocusAdapter() {
+        InsertTeleCliente.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        InsertTeleCliente.setForeground(new java.awt.Color(153, 153, 153));
+        InsertTeleCliente.setText("Telefone");
+        InsertTeleCliente.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                InsertEmailC2FocusGained(evt);
+                InsertTeleClienteFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                InsertEmailC2FocusLost(evt);
+                InsertTeleClienteFocusLost(evt);
             }
         });
-        InsertEmailC2.addActionListener(new java.awt.event.ActionListener() {
+        InsertTeleCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InsertEmailC2ActionPerformed(evt);
+                InsertTeleClienteActionPerformed(evt);
             }
         });
 
-        InsertEmailC3.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
-        InsertEmailC3.setForeground(new java.awt.Color(153, 153, 153));
-        InsertEmailC3.setText("CPF...");
-        InsertEmailC3.addFocusListener(new java.awt.event.FocusAdapter() {
+        InsertCepClientes.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        InsertCepClientes.setForeground(new java.awt.Color(153, 153, 153));
+        InsertCepClientes.setText("CEP");
+        InsertCepClientes.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                InsertEmailC3FocusGained(evt);
+                InsertCepClientesFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                InsertEmailC3FocusLost(evt);
+                InsertCepClientesFocusLost(evt);
             }
         });
-        InsertEmailC3.addActionListener(new java.awt.event.ActionListener() {
+        InsertCepClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InsertEmailC3ActionPerformed(evt);
+                InsertCepClientesActionPerformed(evt);
             }
         });
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("CEP:");
 
-        jButton2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jButton2.setText("Adicionar");
-        jButton2.setAlignmentY(0.0F);
-        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAdicionar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        btnAdicionar.setText("Adicionar");
+        btnAdicionar.setAlignmentY(0.0F);
+        btnAdicionar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAdicionarActionPerformed(evt);
             }
         });
 
@@ -199,24 +200,30 @@ public class Clientes extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(94, 94, 94)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(InsertEmailC3)
-                    .addComponent(InsertEmailC)
-                    .addComponent(InsertEmailC2)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(InsertTeleCliente, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(InsertEndCliente, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(InsertNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6)
-                                .addComponent(InsertNomeC, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(103, 103, 103)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(InsertCepClientes))
+                        .addGap(103, 103, 103)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(536, 536, 536)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -228,38 +235,38 @@ public class Clientes extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)
                         .addGap(4, 4, 4)
-                        .addComponent(InsertNomeC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(InsertNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
                         .addGap(5, 5, 5)
-                        .addComponent(InsertEmailC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)
-                        .addGap(5, 5, 5)
-                        .addComponent(InsertEmailC2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(InsertEndCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7)
                         .addGap(5, 5, 5)
-                        .addComponent(InsertEmailC3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(InsertCepClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel6)
+                        .addGap(5, 5, 5)
+                        .addComponent(InsertTeleCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap(11, Short.MAX_VALUE)
                         .addComponent(jLabel2)
                         .addGap(27, 27, 27)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(34, 34, 34))
         );
 
@@ -271,85 +278,110 @@ public class Clientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void InsertNomeCFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertNomeCFocusGained
+    private void InsertNomeClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertNomeClienteFocusGained
 
-        if(InsertNomeC.getText().equals("Nome Completo")){
+        if(InsertNomeCliente.getText().equals("Nome Completo")){
 
-            InsertNomeC.setText("");
-            InsertNomeC.setForeground(new Color(0, 0, 0));
-
-        }
-
-    }//GEN-LAST:event_InsertNomeCFocusGained
-
-    private void InsertNomeCFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertNomeCFocusLost
-
-        if(InsertNomeC.getText().equals("")){
-
-            InsertNomeC.setText("Nome Completo");
-            InsertNomeC.setForeground(new Color(153, 153, 153));
+            InsertNomeCliente.setText("");
+            InsertNomeCliente.setForeground(new Color(0, 0, 0));
 
         }
 
-    }//GEN-LAST:event_InsertNomeCFocusLost
+    }//GEN-LAST:event_InsertNomeClienteFocusGained
 
-    private void InsertNomeCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertNomeCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InsertNomeCActionPerformed
+    private void InsertNomeClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertNomeClienteFocusLost
 
-    private void InsertEmailCFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEmailCFocusGained
+        if(InsertNomeCliente.getText().equals("")){
 
-        if(InsertEmailC.getText().equals("Email")){
-
-            InsertEmailC.setText("");
-            InsertEmailC.setForeground(new Color(0, 0, 0));
+            InsertNomeCliente.setText("Nome Completo");
+            InsertNomeCliente.setForeground(new Color(153, 153, 153));
 
         }
 
-    }//GEN-LAST:event_InsertEmailCFocusGained
+    }//GEN-LAST:event_InsertNomeClienteFocusLost
 
-    private void InsertEmailCFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEmailCFocusLost
+    private void InsertNomeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertNomeClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InsertNomeClienteActionPerformed
 
-        if(InsertEmailC.getText().equals("")){
+    private void InsertEndClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEndClienteFocusGained
 
-            InsertEmailC.setText("Email");
-            InsertEmailC.setForeground(new Color(153, 153, 153));
+        if(InsertEndCliente.getText().equals("Endereço")){
+
+            InsertEndCliente.setText("");
+            InsertEndCliente.setForeground(new Color(0, 0, 0));
 
         }
 
-    }//GEN-LAST:event_InsertEmailCFocusLost
+    }//GEN-LAST:event_InsertEndClienteFocusGained
 
-    private void InsertEmailCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertEmailCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InsertEmailCActionPerformed
+    private void InsertEndClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEndClienteFocusLost
 
-    private void InsertEmailC2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEmailC2FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InsertEmailC2FocusGained
+        if(InsertEndCliente.getText().equals("")){
 
-    private void InsertEmailC2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEmailC2FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InsertEmailC2FocusLost
+            InsertEndCliente.setText("Endereço");
+            InsertEndCliente.setForeground(new Color(153, 153, 153));
 
-    private void InsertEmailC2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertEmailC2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InsertEmailC2ActionPerformed
+        }
 
-    private void InsertEmailC3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEmailC3FocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InsertEmailC3FocusGained
+    }//GEN-LAST:event_InsertEndClienteFocusLost
 
-    private void InsertEmailC3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertEmailC3FocusLost
+    private void InsertEndClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertEndClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_InsertEmailC3FocusLost
+    }//GEN-LAST:event_InsertEndClienteActionPerformed
 
-    private void InsertEmailC3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertEmailC3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_InsertEmailC3ActionPerformed
+    private void InsertTeleClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertTeleClienteFocusGained
+        if(InsertTeleCliente.getText().equals("Telefone")){
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+            InsertTeleCliente.setText("");
+            InsertTeleCliente.setForeground(new Color(0, 0, 0));
+
+        }
+    }//GEN-LAST:event_InsertTeleClienteFocusGained
+
+    private void InsertTeleClienteFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertTeleClienteFocusLost
+        if(InsertTeleCliente.getText().equals("")){
+
+            InsertTeleCliente.setText("Telefone");
+            InsertTeleCliente.setForeground(new Color(153, 153, 153));
+
+        }
+    }//GEN-LAST:event_InsertTeleClienteFocusLost
+
+    private void InsertTeleClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertTeleClienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_InsertTeleClienteActionPerformed
+
+    private void InsertCepClientesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertCepClientesFocusGained
+        if(InsertCepClientes.getText().equals("CEP")){
+
+            InsertCepClientes.setText("");
+            InsertCepClientes.setForeground(new Color(0, 0, 0));
+
+        }
+    }//GEN-LAST:event_InsertCepClientesFocusGained
+
+    private void InsertCepClientesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertCepClientesFocusLost
+        if(InsertCepClientes.getText().equals("")){
+
+            InsertCepClientes.setText("CEP");
+            InsertCepClientes.setForeground(new Color(153, 153, 153));
+
+        }
+    }//GEN-LAST:event_InsertCepClientesFocusLost
+
+    private void InsertCepClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsertCepClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InsertCepClientesActionPerformed
+
+    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
+        try {
+            controller.SalvarCliente();
+            controller.adicionarATabela(TabelaClientes);
+        } catch (SQLException ex) {
+            Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -361,6 +393,38 @@ public class Clientes extends javax.swing.JFrame {
 
     public void setTabelaClientes(JTable TabelaClientes) {
         this.TabelaClientes = TabelaClientes;
+    }
+
+    public JTextField getInsertCepClientes() {
+        return InsertCepClientes;
+    }
+
+    public void setInsertCepClientes(JTextField InsertCepClientes) {
+        this.InsertCepClientes = InsertCepClientes;
+    }
+
+    public JTextField getInsertEndCliente() {
+        return InsertEndCliente;
+    }
+
+    public void setInsertEndCliente(JTextField InsertEndCliente) {
+        this.InsertEndCliente = InsertEndCliente;
+    }
+
+    public JTextField getInsertNomeCliente() {
+        return InsertNomeCliente;
+    }
+
+    public void setInsertNomeCliente(JTextField InsertNomeCliente) {
+        this.InsertNomeCliente = InsertNomeCliente;
+    }
+
+    public JTextField getInsertTeleCliente() {
+        return InsertTeleCliente;
+    }
+
+    public void setInsertTeleCliente(JTextField InsertTeleCliente) {
+        this.InsertTeleCliente = InsertTeleCliente;
     }
     
     
@@ -402,13 +466,13 @@ public class Clientes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField InsertEmailC;
-    private javax.swing.JTextField InsertEmailC2;
-    private javax.swing.JTextField InsertEmailC3;
-    private javax.swing.JTextField InsertNomeC;
+    private javax.swing.JTextField InsertCepClientes;
+    private javax.swing.JTextField InsertEndCliente;
+    private javax.swing.JTextField InsertNomeCliente;
+    private javax.swing.JTextField InsertTeleCliente;
     private javax.swing.JTable TabelaClientes;
+    private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -24,10 +24,10 @@ public class ClienteDAO {
             
             PreparedStatement statement = connection.prepareStatement(sql);
 
-//            statement.setString(1, "Gilberto"/*cliente.getNomeUsuario()*/);
-//            statement.setString(2, "Rua dondoca"/*cliente.getEmail()*/);
-//            statement.setInt(3, 90324752/*cliente.getSenha()*/);
-//            statement.setInt(4, 219546677);
+            statement.setString(1, cliente.getNome_Cliente());
+            statement.setString(2, cliente.getEndereço());
+            statement.setInt(3, cliente.getCep());
+            statement.setString(4, cliente.getTelefone());
             
             statement.execute();
             
@@ -42,7 +42,7 @@ public class ClienteDAO {
             statement.setString(1, cliente.getNome_Cliente());
             statement.setString(2, cliente.getEndereço());
             statement.setInt(3, cliente.getCep());
-            statement.setInt(4, cliente.getTelefone());
+            statement.setString(4, cliente.getTelefone());
             statement.setInt(5, cliente.getId_Cliente());
             
             statement.execute();
@@ -102,7 +102,7 @@ public class ClienteDAO {
             String nome = resultSet.getString("nome");
             String endereço = resultSet.getString("endereço");
             int cep = resultSet.getInt("cep");
-            int telefone = resultSet.getInt("telefone");
+            String telefone = resultSet.getString("telefone");
         
             Cliente clienteDoBanco = new Cliente(id_cliente, nome, endereço, cep, telefone);
             clientes.add(clienteDoBanco);

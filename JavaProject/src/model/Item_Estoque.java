@@ -7,21 +7,24 @@ public class Item_Estoque {
     private String Nome_Item;
     private String Modelo;
     private String Fornecedor;
-    private Double Valor;
+    private double Valor;
+    private int qtd;
 
-    public Item_Estoque(int id_Item, String Nome_Item, String Modelo, String Fornecedor, Double Valor) {
+    public Item_Estoque(int id_Item, String Nome_Item, String Modelo, String Fornecedor, double Valor, int qtd) {
         this.id_Item = id_Item;
         this.Nome_Item = Nome_Item;
         this.Modelo = Modelo;
         this.Fornecedor = Fornecedor;
         this.Valor = Valor;
+        this.qtd = qtd;
     }
 
-    public Item_Estoque(String Nome_Item, String Modelo, String Fornecedor, Double Valor) {
+    public Item_Estoque(String Nome_Item, String Modelo, String Fornecedor, double Valor, int qtd) {
         this.Nome_Item = Nome_Item;
         this.Modelo = Modelo;
         this.Fornecedor = Fornecedor;
         this.Valor = Valor;
+        this.qtd = qtd;
     }
 
     public int getId_Item() {
@@ -56,13 +59,23 @@ public class Item_Estoque {
         this.Fornecedor = Fornecedor;
     }
 
-    public Double getValor() {
+    public double getValor() {
         return Valor;
     }
 
-    public void setValor(Double Valor) {
+    public void setValor(double Valor) {
         this.Valor = Valor;
     }
+
+    public int getQtd() {
+        return qtd;
+    }
+
+    public void setQtd(int qtd) {
+        this.qtd = qtd;
+    }
+
+    
     
     
     

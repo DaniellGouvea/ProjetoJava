@@ -7,9 +7,9 @@ public class Cliente {
     private String nome_Cliente;
     private String endereço;
     private int cep;
-    private int telefone;
+    private String telefone;
 
-    public Cliente(int id_Cliente, String nome_Cliente, String endereço, int cep, int telefone) {
+    public Cliente(int id_Cliente, String nome_Cliente, String endereço, int cep, String telefone) {
         this.id_Cliente = id_Cliente;
         this.nome_Cliente = nome_Cliente;
         this.endereço = endereço;
@@ -17,7 +17,7 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public Cliente(String nome_Cliente, String endereço, int cep, int telefone) {
+    public Cliente(String nome_Cliente, String endereço, int cep, String telefone) {
         this.nome_Cliente = nome_Cliente;
         this.endereço = endereço;
         this.cep = cep;
@@ -56,11 +56,11 @@ public class Cliente {
         this.cep = cep;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
     
