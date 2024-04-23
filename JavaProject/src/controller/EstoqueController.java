@@ -2,9 +2,11 @@ package controller;
 
 import dao.Conexao;
 import dao.EstoqueDAO;
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.Item_Estoque;
@@ -20,19 +22,47 @@ public class EstoqueController {
     }
     
     public void SalvarCliente() throws SQLException{
-    
+        
         String nome_item = view.getInsertNomeProduto().getText();
         String nome_modelo = view.getInsertModeloProduto().getText();
         String nome_fornecedor = view.getInsertFornecedorProduto().getText();
-        double valor = Double.parseDouble(view.getInsertPrecoProduto().getText());
-        int qtd = Integer.parseInt(view.getInsertQtdProduto().getText());
-    
-        Item_Estoque item_estoque = new Item_Estoque(nome_item, nome_modelo, nome_fornecedor, valor, qtd);
         
-        Connection conexao = new Conexao().getConnection();
-        EstoqueDAO estoquedao = new EstoqueDAO(conexao);
         
-        estoquedao.insert(item_estoque);
+        try {
+            
+            double valor = Double.parseDouble(view.getInsertPrecoProduto().getText());
+            int qtd = Integer.parseInt(view.getInsertQtdProduto().getText());
+
+            String valorString = view.getInsertPrecoProduto().getText();
+            String qtdString = view.getInsertQtdProduto().getText();
+            
+            if(nome_item.equals("Nome") || nome_modelo.equals("Modelo") || nome_fornecedor.equals("Fornecedor") || valorString.equals("Preço") || qtdString.equals("Quantidade"))
+            {
+            
+                JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+            
+            }else{
+            
+                Item_Estoque item_estoque = new Item_Estoque(nome_item, nome_modelo, nome_fornecedor, valor, qtd);
+                Connection conexao = new Conexao().getConnection();
+                EstoqueDAO estoquedao = new EstoqueDAO(conexao);
+                estoquedao.insert(item_estoque);
+            
+            }
+                
+                       
+        } catch (HeadlessException | NumberFormatException | SQLException e) {
+            
+            JOptionPane.showMessageDialog(null, "Houve um erro ao inserir o o item no Estoque: " + e.getMessage());
+            
+        }
+        
+            
+        
+        
+        
+        
+        
         
     }
     
