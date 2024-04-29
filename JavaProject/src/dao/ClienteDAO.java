@@ -33,6 +33,23 @@ public class ClienteDAO {
             
     }
     
+    public void insertComCpf(Cliente cliente) throws SQLException{
+
+            
+            String sql = "insert into cliente(nome, endereço, cep, telefone, cpf) values (?, ?, ?, ?, ?)";
+            
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.setString(1, cliente.getNome_Cliente());
+            statement.setString(2, cliente.getEndereço());
+            statement.setInt(3, cliente.getCep());
+            statement.setString(4, cliente.getTelefone());
+            statement.setDouble(5, cliente.getCpf());
+            
+            statement.execute();
+            
+    }
+    
     public void update(Cliente cliente) throws SQLException{
     
         String sql = "update cliente set nome = ?, endereço = ?, cep = ?, telefone = ? where id_cliente = ?";
@@ -103,8 +120,9 @@ public class ClienteDAO {
             String endereço = resultSet.getString("endereço");
             int cep = resultSet.getInt("cep");
             String telefone = resultSet.getString("telefone");
+            Double cpf = resultSet.getDouble("cpf");
         
-            Cliente clienteDoBanco = new Cliente(id_cliente, nome, endereço, cep, telefone);
+            Cliente clienteDoBanco = new Cliente(id_cliente, nome, endereço, cep, telefone,cpf);
             clientes.add(clienteDoBanco);
             
         }

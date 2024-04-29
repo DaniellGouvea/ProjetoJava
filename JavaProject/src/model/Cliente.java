@@ -8,7 +8,16 @@ public class Cliente {
     private String endereço;
     private int cep;
     private String telefone;
+    private Double cpf;
 
+    public Cliente(int id_Cliente, String nome_Cliente, String endereço, int cep, String telefone, Double cpf) {
+        this.id_Cliente = id_Cliente;
+        this.nome_Cliente = nome_Cliente;
+        this.endereço = endereço;
+        this.cep = cep;
+        this.telefone = telefone;
+        this.cpf = cpf;
+    }
     public Cliente(int id_Cliente, String nome_Cliente, String endereço, int cep, String telefone) {
         this.id_Cliente = id_Cliente;
         this.nome_Cliente = nome_Cliente;
@@ -16,7 +25,13 @@ public class Cliente {
         this.cep = cep;
         this.telefone = telefone;
     }
-
+    public Cliente(String nome_Cliente, String endereço, int cep, String telefone, Double cpf) {
+        this.nome_Cliente = nome_Cliente;
+        this.endereço = endereço;
+        this.cep = cep;
+        this.telefone = telefone;
+        this.cpf = cpf;
+    }
     public Cliente(String nome_Cliente, String endereço, int cep, String telefone) {
         this.nome_Cliente = nome_Cliente;
         this.endereço = endereço;
@@ -62,6 +77,14 @@ public class Cliente {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public Double getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(Double cpf) {
+        this.cpf = cpf;
     }
     
     

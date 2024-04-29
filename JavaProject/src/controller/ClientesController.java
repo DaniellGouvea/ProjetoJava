@@ -5,6 +5,7 @@ import dao.Conexao;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -31,9 +32,10 @@ public class ClientesController {
         String endereco = view.getInsertEndCliente().getText();
         int cep;
         String telefone = view.getInsertTeleCliente().getText();
+        Double cpf;
         
         String CepString = view.getInsertCepClientes().getText();
-        
+        String CpfString = view.getInsertCPFCliente().getText();
         
         try {
             //Verifica se os campos estão preenchidos
@@ -52,10 +54,36 @@ public class ClientesController {
                         }//Finalmente executa do envio
                         else{
                             cep = Integer.parseInt(view.getInsertCepClientes().getText());
-                            Cliente cliente = new Cliente(nome_cliente, endereco, cep, telefone);
+                            
+                            
+                           if(CpfString.equals("CPF")){
+                               
+                                cpf = null;
+                              
+                           }else {
+                               
+                                cpf = Double.valueOf(view.getInsertCPFCliente().getText());
+                           
+                           }
+                            Cliente cliente = new Cliente(nome_cliente, endereco, cep, telefone, cpf);
+                               
                             Connection conexao = new Conexao().getConnection();
                             ClienteDAO clientedao = new ClienteDAO(conexao);
-                            clientedao.insert(cliente);
+                            if(cliente.getCpf() == null){
+                                clientedao.insert(cliente);
+                            }else if(cliente.getCpf() != null){
+                                if(CpfString.length() < 11 || CpfString.length() > 11){
+                                    JOptionPane.showMessageDialog(null, "Cpf deve conter 11 digitos");
+                                
+                                }else{
+                                
+                                                                    
+                                    clientedao.insertComCpf(cliente);
+                                
+                                }
+
+                            }
+                            
                         }   
                     } else {
                         JOptionPane.showMessageDialog(null, "Os valores dos campos CEP e Telefone devem ser numéricos");
@@ -75,6 +103,8 @@ public class ClientesController {
         Connection conexao = new Conexao().getConnection();
         ClienteDAO clientedao = new ClienteDAO(conexao);
         
+        
+        
         ArrayList<Cliente> selectAllParaTabela = clientedao.selectAll();
         
         DefaultTableModel tableModel =  (DefaultTableModel) view.getTabelaClientes().getModel();
@@ -89,7 +119,8 @@ public class ClientesController {
                 cliente.getNome_Cliente(),
                 cliente.getEndereço(),
                 cliente.getCep(),
-                cliente.getTelefone()
+                cliente.getTelefone(),
+                valorCpf(cliente.getCpf())
                 
             }
             );
@@ -98,5 +129,19 @@ public class ClientesController {
         }
     }
     
+    private String valorCpf(double valor){
+        
+        
+            String valorFormatado = new DecimalFormat("#").format(valor);
+            
+            if(valorFormatado.equals("0")){
+            
+                valorFormatado = "Não Informado";
+            
+            }
+            
+        
+            return valorFormatado;
     
+    }
 }

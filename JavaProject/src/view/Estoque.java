@@ -62,6 +62,7 @@ public class Estoque extends javax.swing.JFrame {
         TabelaEstoque = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
         InsertFornecedorProduto = new javax.swing.JTextField();
+        VoltarTela = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -222,24 +223,34 @@ public class Estoque extends javax.swing.JFrame {
             }
         });
 
+        VoltarTela.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/left-arrow-alt-regular-48.png"))); // NOI18N
+        VoltarTela.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                VoltarTelaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(InsertNomeProduto)
-                    .addComponent(InsertQtdProduto)
-                    .addComponent(InsertModeloProduto)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(InsertFornecedorProduto)
-                    .addComponent(InsertPrecoProduto)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(InsertNomeProduto)
+                            .addComponent(InsertQtdProduto)
+                            .addComponent(InsertModeloProduto)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(InsertFornecedorProduto)
+                            .addComponent(InsertPrecoProduto)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(VoltarTela, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -267,7 +278,8 @@ public class Estoque extends javax.swing.JFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(34, 34, 34))
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addComponent(VoltarTela, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(jLabel3)
@@ -429,6 +441,14 @@ public class Estoque extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_InsertFornecedorProdutoActionPerformed
 
+    private void VoltarTelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VoltarTelaMouseClicked
+
+        new TelaDeMenu().setVisible(true);
+
+        dispose();
+        
+    }//GEN-LAST:event_VoltarTelaMouseClicked
+
     public JTable getTabelaEstoque() {
         return TabelaEstoque;
     }
@@ -525,6 +545,7 @@ public class Estoque extends javax.swing.JFrame {
     private javax.swing.JTextField InsertPrecoProduto;
     private javax.swing.JTextField InsertQtdProduto;
     private javax.swing.JTable TabelaEstoque;
+    private javax.swing.JLabel VoltarTela;
     private javax.swing.JButton btnAdicionar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;

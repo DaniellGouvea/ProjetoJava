@@ -19,7 +19,7 @@ public class TelaDeMenuController {
         this.view = view;
     }
     
-    public void adicionarATabela(JTable tabelaUsuario) throws SQLException{
+    /*public void adicionarATabela(JTable tabelaUsuario) throws SQLException{
     
         Connection conexao = new Conexao().getConnection();
         UsuarioDAO usuariodao = new UsuarioDAO(conexao);
@@ -43,7 +43,7 @@ public class TelaDeMenuController {
             
             
         }
-    }
+    }*/
     
     
     
