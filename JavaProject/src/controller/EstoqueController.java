@@ -35,7 +35,7 @@ public class EstoqueController {
 
             String valorString = view.getInsertPrecoProduto().getText();
             String qtdString = view.getInsertQtdProduto().getText();
-            
+            //Verifica se os campos estão preenchidos
             if(nome_item.equals("Nome") || nome_modelo.equals("Modelo") || nome_fornecedor.equals("Fornecedor") || valorString.equals("Preço") || qtdString.equals("Quantidade"))
             {
             
@@ -51,7 +51,8 @@ public class EstoqueController {
             }
                 
                        
-        } catch (HeadlessException | NumberFormatException | SQLException e) {
+        }//Captura o erro de input nos campos valor e quantidade
+        catch (HeadlessException | NumberFormatException | SQLException e) {
             
             JOptionPane.showMessageDialog(null, "Houve um erro ao inserir o o item no Estoque: " + e.getMessage());
             
