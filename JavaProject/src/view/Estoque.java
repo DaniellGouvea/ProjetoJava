@@ -57,7 +57,7 @@ public class Estoque extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnAdicionar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         TabelaEstoque = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
@@ -172,13 +172,13 @@ public class Estoque extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jButton1.setText("Excluir");
-        jButton1.setAlignmentY(0.0F);
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluir.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        btnExcluir.setText("Excluir");
+        btnExcluir.setAlignmentY(0.0F);
+        btnExcluir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnExcluirActionPerformed(evt);
             }
         });
 
@@ -258,7 +258,7 @@ public class Estoque extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel2)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(89, 89, 89))
@@ -275,7 +275,7 @@ public class Estoque extends javax.swing.JFrame {
                     .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(34, 34, 34))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(VoltarTela, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -403,7 +403,7 @@ public class Estoque extends javax.swing.JFrame {
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
         
         try {
-            controller.SalvarCliente();
+            controller.SalvarEstoque();
             controller.adicionarATabela(TabelaEstoque);
         } catch (SQLException ex) {
             Logger.getLogger(Estoque.class.getName()).log(Level.SEVERE, null, ex);
@@ -415,9 +415,15 @@ public class Estoque extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        try {
+            controller.excluirDoEstoque();
+            controller.adicionarATabela(TabelaEstoque);
+        } catch (SQLException ex) {
+            Logger.getLogger(Estoque.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void InsertFornecedorProdutoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertFornecedorProdutoFocusGained
         if(InsertFornecedorProduto.getText().equals("Fornecedor")){
@@ -547,7 +553,7 @@ public class Estoque extends javax.swing.JFrame {
     private javax.swing.JTable TabelaEstoque;
     private javax.swing.JLabel VoltarTela;
     private javax.swing.JButton btnAdicionar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
