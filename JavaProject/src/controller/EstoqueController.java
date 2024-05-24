@@ -6,6 +6,7 @@ import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -99,7 +100,12 @@ public class EstoqueController {
             
             
         }
-    }
+
+    
+      
+}
+
+    
     
     
     public void updateDoEstoque(Item_Estoque item_estoque) throws SQLException{

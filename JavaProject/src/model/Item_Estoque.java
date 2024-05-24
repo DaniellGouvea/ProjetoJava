@@ -80,8 +80,11 @@ public class Item_Estoque {
     public void setQtd(int qtd) {
         this.qtd = qtd;
     }
-
     
+    @Override
+    public String toString() {
+        return Nome_Item + " - " + Modelo; // Ajuste conforme necessário
+    }
     
     
     
