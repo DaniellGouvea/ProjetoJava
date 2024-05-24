@@ -47,7 +47,7 @@ public class EstoqueDAO {
         statement.setInt(5, item_estoque.getQtd());
         statement.setInt(6, item_estoque.getId_Item());
 
-        statement.execute();
+        statement.executeUpdate();
     
     
     }
@@ -124,6 +124,20 @@ public class EstoqueDAO {
 
         
         return pesquisa(statement).get(0);
+    }
+    
+    public boolean itemExiste(Item_Estoque item_estoque) throws SQLException {
+        String sql = "select * from item_estoque where nome_item = ? and nome_modelo = ? and nome_fornecedor = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, item_estoque.getNome_Item());
+        statement.setString(2, item_estoque.getModelo());
+        statement.setString(3, item_estoque.getFornecedor());
+
+        ResultSet resultSet = statement.executeQuery();
+        if(resultSet.next()) {
+            return resultSet.getInt(1) > 0;
+        }
+        return false;
     }
     
 }

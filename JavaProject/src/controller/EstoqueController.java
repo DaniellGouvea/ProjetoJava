@@ -21,7 +21,8 @@ public class EstoqueController {
         this.view = view;
     }
     
-    public void SalvarCliente() throws SQLException{
+    //Salva o cliente no Banco de dados
+    public void SalvarEstoque() throws SQLException{
         
         String nome_item = view.getInsertNomeProduto().getText();
         String nome_modelo = view.getInsertModeloProduto().getText();
@@ -46,7 +47,16 @@ public class EstoqueController {
                 Item_Estoque item_estoque = new Item_Estoque(nome_item, nome_modelo, nome_fornecedor, valor, qtd);
                 Connection conexao = new Conexao().getConnection();
                 EstoqueDAO estoquedao = new EstoqueDAO(conexao);
-                estoquedao.insert(item_estoque);
+                if(estoquedao.itemExiste(item_estoque)){
+                
+                    JOptionPane.showMessageDialog(null, "Item já cadastrado. Tente utilizar o Botão Alterar");
+                
+                }else{
+                    
+                    estoquedao.insert(item_estoque);
+                    
+                }
+                
             
             }
                 
@@ -57,18 +67,12 @@ public class EstoqueController {
             JOptionPane.showMessageDialog(null, "Houve um erro ao inserir o o item no Estoque: " + e.getMessage());
             
         }
-        
-            
-        
-        
-        
-        
-        
+      
         
     }
     
     
-    
+    //Adiciona/Update o Item na Tabela na View
     public void adicionarATabela(JTable tabelaEstoque) throws SQLException{
     
         Connection conexao = new Conexao().getConnection();
@@ -96,6 +100,27 @@ public class EstoqueController {
             
         }
     }
+    
+    
+    public void updateDoEstoque(Item_Estoque item_estoque) throws SQLException{
+    
+     Connection conexao = new Conexao().getConnection();
+     EstoqueDAO estoquedao = new EstoqueDAO(conexao);
+     estoquedao.update(item_estoque);
+        
+    }
+    
+    public void excluirDoEstoque(int id_item) throws SQLException{
+    
+        
+        
+        Item_Estoque item_estoque = new Item_Estoque(id_item);
+        Connection conexao = new Conexao().getConnection();
+        EstoqueDAO estoquedao = new EstoqueDAO(conexao);
+        estoquedao.delete(item_estoque);
+        
+    }
+    
     
     
 }

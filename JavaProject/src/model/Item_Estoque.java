@@ -27,6 +27,12 @@ public class Item_Estoque {
         this.qtd = qtd;
     }
 
+    public Item_Estoque(int id_Item) {
+        this.id_Item = id_Item;
+    }
+    
+    
+    
     public int getId_Item() {
         return id_Item;
     }

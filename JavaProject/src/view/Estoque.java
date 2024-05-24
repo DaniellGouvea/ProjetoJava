@@ -9,9 +9,11 @@ import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import model.Item_Estoque;
 
 /**
  *
@@ -57,7 +59,7 @@ public class Estoque extends javax.swing.JFrame {
         InsertModeloProduto = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnAdicionar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         TabelaEstoque = new javax.swing.JTable();
@@ -164,13 +166,13 @@ public class Estoque extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jButton3.setText("Alterar");
-        jButton3.setAlignmentY(0.0F);
-        jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnAlterar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        btnAlterar.setText("Alterar");
+        btnAlterar.setAlignmentY(0.0F);
+        btnAlterar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnAlterarActionPerformed(evt);
             }
         });
 
@@ -265,7 +267,7 @@ public class Estoque extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -280,16 +282,16 @@ public class Estoque extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(32, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(mostraId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mostraId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(34, 34, 34))
             .addGroup(layout.createSequentialGroup()
@@ -426,9 +428,31 @@ public class Estoque extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        DefaultTableModel model = (DefaultTableModel) TabelaEstoque.getModel();
+        int selectedRowIndex = TabelaEstoque.getSelectedRow();
+
+        if (selectedRowIndex != -1) { // Verifica se uma linha está selecionada
+            int id = (int) model.getValueAt(selectedRowIndex, 0);
+            String nome = InsertNomeProduto.getText();
+            String modelo = InsertModeloProduto.getText();
+            String fornecedor = InsertFornecedorProduto.getText();
+            double valor = Double.parseDouble(InsertPrecoProduto.getText());
+            int qtd = Integer.parseInt(InsertQtdProduto.getText());
+
+            Item_Estoque item_estoque = new Item_Estoque(id, nome, modelo, fornecedor, valor, qtd);
+
+            try {
+                controller.updateDoEstoque(item_estoque);
+                controller.adicionarATabela(TabelaEstoque);
+            } catch (SQLException ex) {
+                Logger.getLogger(Estoque.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha para editar.");
+        }
+        
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         try {
@@ -477,10 +501,13 @@ public class Estoque extends javax.swing.JFrame {
         
         selectedId = (int) model.getValueAt(selectedRowIndex, 0);
         
-            
-            
-
-           mostraId.setText("Id Selecionado: " + selectedId);
+        InsertNomeProduto.setText(model.getValueAt(selectedRowIndex, 1).toString());
+        InsertModeloProduto.setText(model.getValueAt(selectedRowIndex, 2).toString());
+        InsertFornecedorProduto.setText(model.getValueAt(selectedRowIndex, 3).toString());
+        InsertPrecoProduto.setText(model.getValueAt(selectedRowIndex, 4).toString());
+        InsertQtdProduto.setText(model.getValueAt(selectedRowIndex, 5).toString());
+         
+        mostraId.setText("Id Selecionado: " + selectedId);
         
     }//GEN-LAST:event_TabelaEstoqueMouseClicked
 
@@ -582,8 +609,8 @@ public class Estoque extends javax.swing.JFrame {
     private javax.swing.JTable TabelaEstoque;
     private javax.swing.JLabel VoltarTela;
     private javax.swing.JButton btnAdicionar;
+    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnExcluir;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
