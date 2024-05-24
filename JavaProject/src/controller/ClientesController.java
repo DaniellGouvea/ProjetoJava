@@ -69,20 +69,30 @@ public class ClientesController {
                                
                             Connection conexao = new Conexao().getConnection();
                             ClienteDAO clientedao = new ClienteDAO(conexao);
-                            if(cliente.getCpf() == null){
-                                clientedao.insert(cliente);
-                            }else if(cliente.getCpf() != null){
-                                if(CpfString.length() < 11 || CpfString.length() > 11){
-                                    JOptionPane.showMessageDialog(null, "Cpf deve conter 11 digitos");
-                                
-                                }else{
-                                
-                                                                    
-                                    clientedao.insertComCpf(cliente);
-                                
-                                }
+                            if(clientedao.clienteExiste(cliente)){
+                            
+                                 JOptionPane.showMessageDialog(null, "Esse Cliente já está cadastrado. Se deseja alterar clique no botão Alterar");   
+                            
+                            
+                            }else {
+                                if(cliente.getCpf() == null){
+                                        clientedao.insert(cliente);
+                                    }else if(cliente.getCpf() != null){
+                                        if(CpfString.length() < 11 || CpfString.length() > 11){
+                                            JOptionPane.showMessageDialog(null, "Cpf deve conter 11 digitos");
 
+                                        }else{
+
+
+                                            clientedao.insertComCpf(cliente);
+                                            
+                                        }
+
+                                }
+                                
+                                
                             }
+                            
                             
                         }   
                     } else {
@@ -143,5 +153,21 @@ public class ClientesController {
         
             return valorFormatado;
     
+    }
+    
+    public void updateCliente(Cliente cliente) throws SQLException{
+        
+        Connection conexao = new Conexao().getConnection();
+        ClienteDAO clientedao = new ClienteDAO(conexao);
+        clientedao.update(cliente);
+        
+    }
+    
+    public void excluirCliente(int id_Cliente) throws SQLException{
+    
+        Cliente cliente = new Cliente(id_Cliente);
+        Connection conexao = new Conexao().getConnection();
+        ClienteDAO clientedao = new ClienteDAO(conexao);
+        clientedao.delete(cliente);
     }
 }

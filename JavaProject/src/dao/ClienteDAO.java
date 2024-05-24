@@ -62,7 +62,7 @@ public class ClienteDAO {
             statement.setString(4, cliente.getTelefone());
             statement.setInt(5, cliente.getId_Cliente());
             
-            statement.execute();
+            statement.executeUpdate();
     
     }
     
@@ -129,5 +129,21 @@ public class ClienteDAO {
         
         
         return clientes;
+    }
+    
+    public boolean clienteExiste(Cliente cliente) throws SQLException {
+        String sql = "select * from cliente where nome = ? and endereço = ? and cep = ? and telefone = ? and cpf = ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setString(1, cliente.getNome_Cliente());
+        statement.setString(2, cliente.getEndereço());
+        statement.setInt(3, cliente.getCep());
+        statement.setString(4, cliente.getTelefone());
+        statement.setDouble(5, cliente.getCpf());
+
+        ResultSet resultSet = statement.executeQuery();
+        if(resultSet.next()) {
+            return resultSet.getInt(1) > 0;
+        }
+        return false;
     }
 }

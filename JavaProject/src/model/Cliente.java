@@ -39,6 +39,12 @@ public class Cliente {
         this.telefone = telefone;
     }
 
+    public Cliente(int id_Cliente) {
+        this.id_Cliente = id_Cliente;
+    }
+    
+    
+
     public int getId_Cliente() {
         return id_Cliente;
     }

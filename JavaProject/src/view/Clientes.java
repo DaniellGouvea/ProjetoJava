@@ -9,8 +9,12 @@ import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import model.Cliente;
+import model.Item_Estoque;
 
 /**
  *
@@ -19,6 +23,7 @@ import javax.swing.JTextField;
 public class Clientes extends javax.swing.JFrame {
 
     private final ClientesController controller;
+    private int selectedId;
 
     /**
      * Creates new form TelaDeClientes
@@ -45,7 +50,7 @@ public class Clientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -58,7 +63,7 @@ public class Clientes extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         VoltarTela = new javax.swing.JLabel();
         btnAdicionar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         InsertCPFCliente = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -67,13 +72,13 @@ public class Clientes extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jButton1.setText("Excluir");
-        jButton1.setAlignmentY(0.0F);
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnExcluir.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        btnExcluir.setText("Excluir");
+        btnExcluir.setAlignmentY(0.0F);
+        btnExcluir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnExcluirActionPerformed(evt);
             }
         });
 
@@ -180,13 +185,13 @@ public class Clientes extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jButton3.setText("Alterar");
-        jButton3.setAlignmentY(0.0F);
-        jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnAlterar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        btnAlterar.setText("Alterar");
+        btnAlterar.setAlignmentY(0.0F);
+        btnAlterar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnAlterarActionPerformed(evt);
             }
         });
 
@@ -227,6 +232,11 @@ public class Clientes extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        TabelaClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabelaClientesMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(TabelaClientes);
@@ -271,9 +281,9 @@ public class Clientes extends javax.swing.JFrame {
                         .addGap(536, 536, 536)
                         .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel2)
                     .addComponent(jScrollPane1))
                 .addGap(89, 89, 89))
@@ -296,8 +306,8 @@ public class Clientes extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -329,9 +339,15 @@ public class Clientes extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        try {
+            controller.excluirCliente(selectedId);
+            controller.adicionarATabela(TabelaClientes);
+        } catch (SQLException ex) {
+            Logger.getLogger(Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void InsertNomeClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertNomeClienteFocusGained
 
@@ -438,9 +454,31 @@ public class Clientes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        DefaultTableModel model = (DefaultTableModel) TabelaClientes.getModel();
+        int selectedRowIndex = TabelaClientes.getSelectedRow();
+
+        if (selectedRowIndex != -1) { // Verifica se uma linha está selecionada
+            int id = (int) model.getValueAt(selectedRowIndex, 0);
+            String nome = InsertNomeCliente.getText();
+            String endereco = InsertEndCliente.getText();
+            int cep = Integer.parseInt(InsertCepClientes.getText());
+            String telefone = InsertTeleCliente.getText();
+            Double cpf = Double.valueOf(InsertCPFCliente.getText());
+
+            Cliente cliente = new Cliente(id, nome, endereco, cep, telefone, cpf);
+
+            try {
+                controller.updateCliente(cliente);
+                controller.adicionarATabela(TabelaClientes);
+            } catch (SQLException ex) {
+                Logger.getLogger(Estoque.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha para editar.");
+        }
+
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void InsertCPFClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_InsertCPFClienteFocusGained
         if(InsertCPFCliente.getText().equals("CPF")){
@@ -471,6 +509,21 @@ public class Clientes extends javax.swing.JFrame {
         dispose();
 
     }//GEN-LAST:event_VoltarTelaMouseClicked
+
+    private void TabelaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaClientesMouseClicked
+        DefaultTableModel model = (DefaultTableModel)TabelaClientes.getModel();
+        int selectedRowIndex = TabelaClientes.getSelectedRow();
+        
+        selectedId = (int) model.getValueAt(selectedRowIndex, 0);
+        
+        InsertNomeCliente.setText(model.getValueAt(selectedRowIndex, 1).toString());
+        InsertEndCliente.setText(model.getValueAt(selectedRowIndex, 2).toString());
+        InsertCepClientes.setText(model.getValueAt(selectedRowIndex, 3).toString());
+        InsertTeleCliente.setText(model.getValueAt(selectedRowIndex, 4).toString());
+        InsertCPFCliente.setText(model.getValueAt(selectedRowIndex, 5).toString());
+         
+        //mostraId.setText("Id Selecionado: " + selectedId);
+    }//GEN-LAST:event_TabelaClientesMouseClicked
 
     public JTable getTabelaClientes() {
         return TabelaClientes;
@@ -567,8 +620,8 @@ public class Clientes extends javax.swing.JFrame {
     private javax.swing.JTable TabelaClientes;
     private javax.swing.JLabel VoltarTela;
     private javax.swing.JButton btnAdicionar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnExcluir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
