@@ -26,7 +26,11 @@ public class TelaDeMenu extends javax.swing.JFrame {
     public TelaDeMenu() {
         initComponents();
         controller = new TelaDeMenuController(this);
-     
+        try {
+            controller.adicionarAoComboBox(ComboBoxEstoque);
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaDeMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -38,14 +42,31 @@ public class TelaDeMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        ComboBoxEstoque = new javax.swing.JComboBox<>();
         jMenuBar1 = new javax.swing.JMenuBar();
         GerenciarMenu = new javax.swing.JMenu();
         Cliente = new javax.swing.JMenuItem();
         Estoque = new javax.swing.JMenuItem();
 
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenu1.setText("jMenu1");
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        ComboBoxEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBoxEstoqueActionPerformed(evt);
+            }
+        });
 
         GerenciarMenu.setText("Gerenciar");
         GerenciarMenu.setToolTipText("");
@@ -74,11 +95,17 @@ public class TelaDeMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1010, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(667, Short.MAX_VALUE)
+                .addComponent(ComboBoxEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(167, 167, 167))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 599, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addComponent(ComboBoxEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(470, Short.MAX_VALUE))
         );
 
         pack();
@@ -96,6 +123,10 @@ public class TelaDeMenu extends javax.swing.JFrame {
         
         dispose();
     }//GEN-LAST:event_EstoqueActionPerformed
+
+    private void ComboBoxEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxEstoqueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboBoxEstoqueActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,8 +169,12 @@ public class TelaDeMenu extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Cliente;
+    private javax.swing.JComboBox<String> ComboBoxEstoque;
     private javax.swing.JMenuItem Estoque;
     private javax.swing.JMenu GerenciarMenu;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     // End of variables declaration//GEN-END:variables
 }
