@@ -56,7 +56,7 @@ public class EstoqueController {
                 }else{
                     
                     estoquedao.insert(item_estoque);
-                    
+                    limparCampo();
                 }
                 
             
@@ -114,7 +114,7 @@ public class EstoqueController {
      Connection conexao = new Conexao().getConnection();
      EstoqueDAO estoquedao = new EstoqueDAO(conexao);
      estoquedao.update(item_estoque);
-        
+     limparCampo();
     }
     
     public void excluirDoEstoque(int id_item) throws SQLException{
@@ -125,7 +125,7 @@ public class EstoqueController {
         Connection conexao = new Conexao().getConnection();
         EstoqueDAO estoquedao = new EstoqueDAO(conexao);
         estoquedao.delete(item_estoque);
-        
+        limparCampo();
     }
     
     public void limparCampo(){
@@ -136,7 +136,7 @@ public class EstoqueController {
         view.getInsertModeloProduto().setText("Modelo");
         view.getInsertModeloProduto().setForeground(new Color(153, 153, 153));
         
-        view.getInsertFornecedorProduto().setText("CEP");
+        view.getInsertFornecedorProduto().setText("Fornecedor");
         view.getInsertFornecedorProduto().setForeground(new Color(153, 153, 153));
         
         view.getInsertPrecoProduto().setText("Preço");
