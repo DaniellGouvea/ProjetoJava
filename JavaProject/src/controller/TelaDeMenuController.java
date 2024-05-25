@@ -1,5 +1,6 @@
 package controller;
 
+import dao.ClienteDAO;
 import dao.Conexao;
 import dao.EstoqueDAO;
 import dao.UsuarioDAO;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import model.Cliente;
 import model.Item_Estoque;
 import model.Usuario;
 import view.TelaDeMenu;
@@ -22,22 +24,22 @@ public class TelaDeMenuController {
         this.view = view;
     }
     
-   public void adicionarAoComboBox(JComboBox<String> comboBoxEstoque) throws SQLException{
+   public void adicionarAoComboBox(JComboBox<String> comboBoxClientes) throws SQLException{
        
         Connection conexao = new Conexao().getConnection();
-        EstoqueDAO estoquedao = new EstoqueDAO(conexao);
+        ClienteDAO clientedao = new ClienteDAO(conexao);
         
-        ArrayList<Item_Estoque> selectAllParaComboBox = estoquedao.selectAll();
+        ArrayList<Cliente> selectAllParaComboBox = clientedao.selectAll();
     
-        comboBoxEstoque.removeAllItems();
+        comboBoxClientes.removeAllItems();
 
-        for (Item_Estoque item_estoque : selectAllParaComboBox) {
-            comboBoxEstoque.addItem(formato(item_estoque.getNome_Item(), item_estoque.getModelo()));
+        for (Cliente cliente : selectAllParaComboBox) {
+            comboBoxClientes.addItem(formato(cliente.getNome_Cliente()));
         }
         }
    
-   public String formato(String Nome_item, String Modelo){
-        String mensagem = String.format("%s (%s)", Nome_item, Modelo);
+   public String formato(String nome){
+        String mensagem = String.format("%s", nome);
         return mensagem;
     }
    

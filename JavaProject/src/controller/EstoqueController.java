@@ -2,6 +2,7 @@ package controller;
 
 import dao.Conexao;
 import dao.EstoqueDAO;
+import java.awt.Color;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -127,6 +128,22 @@ public class EstoqueController {
         
     }
     
-    
+    public void limparCampo(){
+        
+        view.getInsertNomeProduto().setText("Nome");
+        view.getInsertNomeProduto().setForeground(new Color(153, 153, 153));
+        
+        view.getInsertModeloProduto().setText("Modelo");
+        view.getInsertModeloProduto().setForeground(new Color(153, 153, 153));
+        
+        view.getInsertFornecedorProduto().setText("CEP");
+        view.getInsertFornecedorProduto().setForeground(new Color(153, 153, 153));
+        
+        view.getInsertPrecoProduto().setText("Preço");
+        view.getInsertPrecoProduto().setForeground(new Color(153, 153, 153));
+        
+        view.getInsertQtdProduto().setText("Quantidade");
+        view.getInsertQtdProduto().setForeground(new Color(153, 153, 153));
+    }
     
 }
