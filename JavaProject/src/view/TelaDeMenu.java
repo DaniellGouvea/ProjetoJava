@@ -5,11 +5,17 @@
 package view;
 
 import controller.TelaDeMenuController;
+import dao.ClienteDAO;
+import dao.Conexao;
+import dao.PedidoDAO;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import model.Cliente;
 
 /**
  *
@@ -18,7 +24,6 @@ import javax.swing.JTable;
 public class TelaDeMenu extends javax.swing.JFrame {
 
     private final TelaDeMenuController controller;
-
         
     /**
      * Creates new form TelaDeClientes
@@ -28,6 +33,7 @@ public class TelaDeMenu extends javax.swing.JFrame {
         controller = new TelaDeMenuController(this);
         try {
             controller.adicionarAoComboBox(ComboBoxEstoque);
+            controller.adicionarATabela(tabela);
         } catch (SQLException ex) {
             Logger.getLogger(TelaDeMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -46,6 +52,11 @@ public class TelaDeMenu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         ComboBoxEstoque = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        Texto = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabela = new javax.swing.JTable();
+        TesteDao = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         GerenciarMenu = new javax.swing.JMenu();
         Cliente = new javax.swing.JMenuItem();
@@ -62,9 +73,30 @@ public class TelaDeMenu extends javax.swing.JFrame {
         setTitle("Menu");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        ComboBoxEstoque.setToolTipText("");
         ComboBoxEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboBoxEstoqueActionPerformed(evt);
+            }
+        });
+
+        tabela.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "nome", "valor", "qtd"
+            }
+        ));
+        jScrollPane1.setViewportView(tabela);
+
+        TesteDao.setText("TesteDAO");
+        TesteDao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TesteDaoActionPerformed(evt);
             }
         });
 
@@ -95,17 +127,41 @@ public class TelaDeMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(667, Short.MAX_VALUE)
-                .addComponent(ComboBoxEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(167, 167, 167))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(ComboBoxEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(Texto, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(124, 124, 124)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(97, 97, 97)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(279, 279, 279)
+                        .addComponent(TesteDao)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(ComboBoxEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(Texto, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(107, 107, 107)
-                .addComponent(ComboBoxEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(470, Short.MAX_VALUE))
+                .addComponent(TesteDao)
+                .addContainerGap(313, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,8 +181,16 @@ public class TelaDeMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_EstoqueActionPerformed
 
     private void ComboBoxEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxEstoqueActionPerformed
-        // TODO add your handling code here:
+                String selectedNome = getComboBoxEstoque().getSelectedItem().toString();
+                
+                Texto.setText(selectedNome);
+                
     }//GEN-LAST:event_ComboBoxEstoqueActionPerformed
+
+    private void TesteDaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TesteDaoActionPerformed
+        //controller.adicionarPedidoAoBancoPedido();
+        controller.adicionarItemPedidoAoBanco();
+    }//GEN-LAST:event_TesteDaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,6 +229,25 @@ public class TelaDeMenu extends javax.swing.JFrame {
         });
     }
 
+    public JComboBox<String> getComboBoxEstoque() {
+        return ComboBoxEstoque;
+    }
+
+    public void setComboBoxEstoque(JComboBox<String> ComboBoxEstoque) {
+        this.ComboBoxEstoque = ComboBoxEstoque;
+    }
+
+    public JTable getTabela() {
+        return tabela;
+    }
+
+    public void setTabela(JTable tabela) {
+        this.tabela = tabela;
+    }
+
+    
+    
+    
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -172,9 +255,14 @@ public class TelaDeMenu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboBoxEstoque;
     private javax.swing.JMenuItem Estoque;
     private javax.swing.JMenu GerenciarMenu;
+    private javax.swing.JButton TesteDao;
+    private javax.swing.JLabel Texto;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabela;
     // End of variables declaration//GEN-END:variables
 }
