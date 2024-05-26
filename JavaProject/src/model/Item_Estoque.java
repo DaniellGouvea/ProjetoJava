@@ -26,7 +26,9 @@ public class Item_Estoque {
         this.Valor = Valor;
         this.qtd = qtd;
     }
-
+    
+    
+    
     public Item_Estoque(int id_Item) {
         this.id_Item = id_Item;
     }

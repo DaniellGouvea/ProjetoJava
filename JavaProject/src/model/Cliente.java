@@ -42,6 +42,11 @@ public class Cliente {
     public Cliente(int id_Cliente) {
         this.id_Cliente = id_Cliente;
     }
+
+    public Cliente(int id_Cliente, String nome_Cliente) {
+        this.id_Cliente = id_Cliente;
+        this.nome_Cliente = nome_Cliente;
+    }
     
     
 
