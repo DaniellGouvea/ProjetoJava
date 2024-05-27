@@ -31,6 +31,14 @@ public class Itempedido{
         this.preco = preco;
     }
 
+    public Itempedido(int id, int pedido_id, long id_item) {
+        this.id = id;
+        this.pedido_id = pedido_id;
+        this.id_item = id_item;
+    }
+    
+    
+    
     public int getId() {
         return id;
     }

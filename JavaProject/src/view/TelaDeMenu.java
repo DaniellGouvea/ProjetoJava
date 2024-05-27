@@ -8,13 +8,18 @@ import controller.TelaDeMenuController;
 import dao.ClienteDAO;
 import dao.Conexao;
 import dao.PedidoDAO;
+import java.sql.Timestamp;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import model.Cliente;
 
 /**
@@ -24,7 +29,8 @@ import model.Cliente;
 public class TelaDeMenu extends javax.swing.JFrame {
 
     private final TelaDeMenuController controller;
-        
+    private int selectedId;    
+    private LocalDateTime agora;
     /**
      * Creates new form TelaDeClientes
      */
@@ -33,7 +39,7 @@ public class TelaDeMenu extends javax.swing.JFrame {
         controller = new TelaDeMenuController(this);
         try {
             controller.adicionarAoComboBox(ComboBoxEstoque);
-            controller.adicionarATabela(tabela);
+            controller.adicionarATabela(TabelaEstoqueMenu);
         } catch (SQLException ex) {
             Logger.getLogger(TelaDeMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -55,8 +61,15 @@ public class TelaDeMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         Texto = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabela = new javax.swing.JTable();
+        TabelaEstoqueMenu = new javax.swing.JTable();
         TesteDao = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TabelaPedidos = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        InicarPedido = new javax.swing.JButton();
+        TestePegaItemPedido = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         GerenciarMenu = new javax.swing.JMenu();
         Cliente = new javax.swing.JMenuItem();
@@ -80,7 +93,36 @@ public class TelaDeMenu extends javax.swing.JFrame {
             }
         });
 
-        tabela.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaEstoqueMenu.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "id_item", "nome", "modelo", "fornecedor", "valor", "qtd"
+            }
+        ));
+        TabelaEstoqueMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TabelaEstoqueMenuMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TabelaEstoqueMenu);
+
+        TesteDao.setText("TesteDAO");
+        TesteDao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TesteDaoActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Tabela Do Estoque");
+
+        jLabel3.setText("Tabela Do Pedido");
+
+        TabelaPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -88,15 +130,22 @@ public class TelaDeMenu extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "nome", "valor", "qtd"
+                "id_pedido", "id_ItemPedido", "Nome Produto"
             }
         ));
-        jScrollPane1.setViewportView(tabela);
+        jScrollPane2.setViewportView(TabelaPedidos);
 
-        TesteDao.setText("TesteDAO");
-        TesteDao.addActionListener(new java.awt.event.ActionListener() {
+        InicarPedido.setText("Iniciar Pedido");
+        InicarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TesteDaoActionPerformed(evt);
+                InicarPedidoActionPerformed(evt);
+            }
+        });
+
+        TestePegaItemPedido.setText("PegaItensPedido");
+        TestePegaItemPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TestePegaItemPedidoActionPerformed(evt);
             }
         });
 
@@ -130,14 +179,36 @@ public class TelaDeMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(ComboBoxEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(Texto, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(124, 124, 124)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(97, 97, 97)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(110, 110, 110)
+                                .addComponent(ComboBoxEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(InicarPedido)
+                                .addGap(25, 25, 25)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Texto, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(TestePegaItemPedido)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(374, 374, 374))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(124, 124, 124)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(107, 107, 107)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(279, 279, 279)
                         .addComponent(TesteDao)))
@@ -149,7 +220,9 @@ public class TelaDeMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(95, 95, 95)
-                        .addComponent(ComboBoxEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ComboBoxEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(InicarPedido)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addComponent(jLabel1))
@@ -157,11 +230,25 @@ public class TelaDeMenu extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addComponent(Texto, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(107, 107, 107)
-                .addComponent(TesteDao)
-                .addContainerGap(313, Short.MAX_VALUE))
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(jLabel4)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(TesteDao))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TestePegaItemPedido))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(278, Short.MAX_VALUE))
         );
 
         pack();
@@ -191,6 +278,26 @@ public class TelaDeMenu extends javax.swing.JFrame {
         //controller.adicionarPedidoAoBancoPedido();
         controller.adicionarItemPedidoAoBanco();
     }//GEN-LAST:event_TesteDaoActionPerformed
+
+    private void TabelaEstoqueMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaEstoqueMenuMouseClicked
+        //controller.adicionarItemPedidoAoBanco();
+    }//GEN-LAST:event_TabelaEstoqueMenuMouseClicked
+
+    private void InicarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicarPedidoActionPerformed
+        controller.adicionarPedidoAoBancoPedido();
+        //LocalDateTime agora = LocalDateTime.now();
+        //controller.TestePegaPedido();
+        
+    }//GEN-LAST:event_InicarPedidoActionPerformed
+
+    private void TestePegaItemPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TestePegaItemPedidoActionPerformed
+        controller.TesteItensPedidos();
+        try {
+            controller.adicionarATabelaPedidos(TabelaPedidos);
+        } catch (SQLException ex) {
+            Logger.getLogger(TelaDeMenu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_TestePegaItemPedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,11 +345,35 @@ public class TelaDeMenu extends javax.swing.JFrame {
     }
 
     public JTable getTabela() {
-        return tabela;
+        return TabelaEstoqueMenu;
     }
 
     public void setTabela(JTable tabela) {
-        this.tabela = tabela;
+        this.TabelaEstoqueMenu = tabela;
+    }
+
+    public JTable getTabelaEstoque1() {
+        return TabelaPedidos;
+    }
+
+    public void setTabelaEstoque1(JTable TabelaEstoque1) {
+        this.TabelaPedidos = TabelaEstoque1;
+    }
+
+    public JTable getTabelaEstoqueMenu() {
+        return TabelaEstoqueMenu;
+    }
+
+    public void setTabelaEstoqueMenu(JTable TabelaEstoqueMenu) {
+        this.TabelaEstoqueMenu = TabelaEstoqueMenu;
+    }
+
+    public JTable getTabelaPedidos() {
+        return TabelaPedidos;
+    }
+
+    public void setTabelaPedidos(JTable TabelaPedidos) {
+        this.TabelaPedidos = TabelaPedidos;
     }
 
     
@@ -255,14 +386,21 @@ public class TelaDeMenu extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboBoxEstoque;
     private javax.swing.JMenuItem Estoque;
     private javax.swing.JMenu GerenciarMenu;
+    private javax.swing.JButton InicarPedido;
+    private javax.swing.JTable TabelaEstoqueMenu;
+    private javax.swing.JTable TabelaPedidos;
     private javax.swing.JButton TesteDao;
+    private javax.swing.JButton TestePegaItemPedido;
     private javax.swing.JLabel Texto;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabela;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

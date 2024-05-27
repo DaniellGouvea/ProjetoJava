@@ -98,8 +98,6 @@ public class EstoqueController {
                 item_estoque.getQtd()
             }
             );
-            
-            
         }
 
     
