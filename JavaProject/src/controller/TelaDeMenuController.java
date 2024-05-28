@@ -1,5 +1,6 @@
 package controller;
 
+
 import dao.ClienteDAO;
 import dao.Conexao;
 import dao.EstoqueDAO;
@@ -25,7 +26,7 @@ import model.Itempedido;
 import model.Pedido;
 import model.Usuario;
 import view.TelaDeMenu;
-
+import javax.swing.JOptionPane;
 
 public class TelaDeMenuController {
     
@@ -87,7 +88,16 @@ public class TelaDeMenuController {
     
       
 }
-        
+   
+   
+    public void limparTabela(JTable TabelaPedidos){
+    
+        DefaultTableModel tableModel = (DefaultTableModel) TabelaPedidos.getModel();
+    
+        tableModel.setNumRows(0);
+    
+    }
+   
    /*public void adicionarATabelaPedidos(JTable TabelaPedidos) throws SQLException{
     
         Connection conexao = new Conexao().getConnection();
@@ -200,7 +210,7 @@ public class TelaDeMenuController {
     
     }
 
-    public void adicionarItemPedidoAoBanco(){
+    public void adicionarItemPedidoAoBanco(boolean setBoolean){
         //Seleciona o id do item e o preço
         DefaultTableModel model = (DefaultTableModel) view.getTabelaEstoqueMenu().getModel();
         int selectedRowIndex = view.getTabelaEstoqueMenu().getSelectedRow();
@@ -220,9 +230,15 @@ public class TelaDeMenuController {
             conexao = new Conexao().getConnection();
             
             PedidoDAO pedidodao = new PedidoDAO(conexao);
+            Pedido pedido;
             
+               if(setBoolean == true){
+                    pedido = new Pedido(pedidodao.pegarPedido());
+               }else{
+                   pedido = new Pedido(2);
+                   JOptionPane.showMessageDialog(null, "Selecione ");
+               }
             
-            Pedido pedido = new Pedido(pedidodao.pegarPedido());
             Item_Estoque item_estoque = new Item_Estoque(selectedId, selectedNome, selectedModelo, selectedFornecedor, selectedPreco, 2);
             
             ItempedidoDAO itempedidodao = new ItempedidoDAO(conexao);

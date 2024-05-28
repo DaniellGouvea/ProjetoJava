@@ -37,11 +37,14 @@ public class ItempedidoDAO {
     }
     
     public ArrayList<Itempedido> selectAllPorId() throws SQLException{
-    
+        
+        Connection conexao = new Conexao().getConnection();
+        PedidoDAO pedidodao = new PedidoDAO(conexao);
+        
         String sql = "select * from itempedido where pedido_id = ?";
         PreparedStatement statement = connection.prepareStatement(sql);
 
-        statement.setInt(1, 34);
+        statement.setInt(1, pedidodao.pegarPedido());
         
     
         ArrayList<Itempedido> itensPedidos = pesquisaItemPedido(statement);
