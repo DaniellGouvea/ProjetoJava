@@ -74,6 +74,7 @@ public class TelaDeMenu extends javax.swing.JFrame {
         GerenciarMenu = new javax.swing.JMenu();
         Cliente = new javax.swing.JMenuItem();
         Estoque = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -86,6 +87,7 @@ public class TelaDeMenu extends javax.swing.JFrame {
         setTitle("Menu");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMaximumSize(new java.awt.Dimension(659, 528));
+        setMinimumSize(new java.awt.Dimension(714, 433));
         setPreferredSize(new java.awt.Dimension(659, 528));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -182,6 +184,14 @@ public class TelaDeMenu extends javax.swing.JFrame {
         });
         GerenciarMenu.add(Estoque);
 
+        jMenuItem2.setText("Pedidos");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        GerenciarMenu.add(jMenuItem2);
+
         jMenuBar1.add(GerenciarMenu);
 
         setJMenuBar(jMenuBar1);
@@ -238,6 +248,12 @@ public class TelaDeMenu extends javax.swing.JFrame {
         ComboBoxEstoque.setSelectedIndex(0);
         JOptionPane.showMessageDialog(null, "Pedido Finalizado");
     }//GEN-LAST:event_EncerrarPedidoActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        new ChecaPedidos().setVisible(true);
+        
+        dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,6 +355,7 @@ public class TelaDeMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables

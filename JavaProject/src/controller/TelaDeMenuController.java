@@ -250,22 +250,22 @@ public class TelaDeMenuController {
     }
 
     
-    public int pegaId(){
-    
-    String selectedNome = view.getComboBoxEstoque().getSelectedItem().toString();
-        
-        int index = selectedNome.indexOf('|');
-        int id_nome = 0;        
-        if (index != -1) {
-            id_nome = Integer.parseInt(selectedNome.substring(0, index));
-                System.out.println("Substring: " + id_nome);
-                } else {
-                    System.out.println("Caractere não encontrado na string.");
-                }
-    
-        return id_nome;
-    
-    }
+public int pegaId(){
+
+String selectedNome = view.getComboBoxEstoque().getSelectedItem().toString();
+
+    int index = selectedNome.indexOf('|');
+    int id_nome = 0;        
+    if (index != -1) {
+        id_nome = Integer.parseInt(selectedNome.substring(0, index));
+            System.out.println("Substring: " + id_nome);
+            } else {
+                System.out.println("Caractere não encontrado na string.");
+            }
+
+    return id_nome;
+
+}
     
        
      

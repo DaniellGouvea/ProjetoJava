@@ -1,7 +1,7 @@
 
 package dao;
 
-import com.mysql.cj.xdevapi.Result;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -74,4 +74,51 @@ public class ItempedidoDAO {
         return itensPedidos;
     }
     
+    
+    public ArrayList<Itempedido> selectAllPorIds(ArrayList<Integer> idsPedidos) throws SQLException{
+    Connection conexao = new Conexao().getConnection();
+    ArrayList<Itempedido> itensPedidos = new ArrayList<>();
+    
+    // Constrói a cláusula IN para a consulta SQL
+    StringBuilder sql = new StringBuilder("select * from itempedido where pedido_id IN (");
+    for (int i = 0; i < idsPedidos.size(); i++) {
+        sql.append("?");
+        if (i < idsPedidos.size() - 1) {
+            sql.append(",");
+        }
+    }
+    sql.append(")");
+
+    PreparedStatement statement = conexao.prepareStatement(sql.toString());
+    
+    // Define os valores dos IDs na consulta
+    for (int i = 0; i < idsPedidos.size(); i++) {
+        statement.setInt(i + 1, idsPedidos.get(i));
+    }
+    
+    // Executa a pesquisa e retorna os resultados
+    itensPedidos = pesquisaItemPedidos(statement);
+    
+    return itensPedidos;
+}
+
+    public ArrayList<Itempedido> pesquisaItemPedidos(PreparedStatement statement) throws SQLException {
+    ArrayList<Itempedido> itensPedidos = new ArrayList<>();
+    statement.execute();
+    
+    ResultSet resultSet = statement.getResultSet();
+    
+    while (resultSet.next()) {
+        int id = resultSet.getInt("id");
+        int pedido_id = resultSet.getInt("pedido_id");
+        long id_item = resultSet.getLong("id_item");
+        int quantidade = resultSet.getInt("quantidade");
+        Double preco = resultSet.getDouble("preco");
+        
+        Itempedido itemDoBanco = new Itempedido(id, pedido_id, id_item,quantidade, preco);
+        itensPedidos.add(itemDoBanco);
+    }
+    return itensPedidos;
+}
+
 }

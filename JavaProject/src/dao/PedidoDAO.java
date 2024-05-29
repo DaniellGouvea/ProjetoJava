@@ -11,7 +11,9 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import model.Cliente;
+import model.Item_Estoque;
 import model.Pedido;
 
 /**
@@ -57,6 +59,53 @@ public class PedidoDAO {
         return 0;
     }
     
+    public ArrayList<Pedido> pegarPedidosPorIdCliente(int id_cliente) throws SQLException {
+        
+        String sql = "SELECT * FROM pedido where cliente_id = ?;";
+        
+        PreparedStatement statement = connection.prepareStatement(sql);
+        
+        statement.setInt(1, id_cliente);
+        
+        
+        return pesquisa(statement);
+    }
+    
+    
+    
+
+    private ArrayList<Pedido> pesquisa(PreparedStatement statement) throws SQLException {
+        
+        ArrayList<Pedido> pedidos = new ArrayList<>();
+        
+        statement.execute();
+        ResultSet resultSet = statement.getResultSet();
+        
+        while(resultSet.next()){
+        
+            int id_pedido = resultSet.getInt("id");
+            int cliente_id = resultSet.getInt("cliente_id");
+            
+        
+            Pedido pedidoNoBanco = new Pedido(id_pedido, cliente_id);
+            pedidos.add(pedidoNoBanco);
+        }
+        
+        return pedidos;
+    }
+    
+    public ArrayList<Integer> pegarIdsDosPedidos(int id_cliente) throws SQLException {
+        
+        ArrayList<Pedido> pedidos = pegarPedidosPorIdCliente(id_cliente);
+        ArrayList<Integer> idsPedidos = new ArrayList<>();
+        
+        for (Pedido pedido : pedidos) {
+            idsPedidos.add(pedido.getId()); // Supondo que você tem um método getId() na classe Pedido
+        }
+        System.out.println(idsPedidos);
+        return idsPedidos;
+        
+    }
     
     
     //Não usado
