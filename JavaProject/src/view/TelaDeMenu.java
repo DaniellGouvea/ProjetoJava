@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -43,6 +44,12 @@ public class TelaDeMenu extends javax.swing.JFrame {
         btnInicarPedido.setBackground(Color.white);
         
         ComboBoxEstoque.setBackground(Color.white);
+        
+        jScrollPane1.getViewport().setBackground(new java.awt.Color(170, 195, 209));
+        
+        
+        
+        jScrollPane2.getViewport().setBackground(new java.awt.Color(170, 195, 209));
         
         controller = new TelaDeMenuController(this);
         try {
