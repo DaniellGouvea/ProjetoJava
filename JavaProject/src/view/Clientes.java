@@ -34,6 +34,7 @@ public class Clientes extends javax.swing.JFrame {
         btnAdicionar.setBackground(Color.white);
         btnAlterar.setBackground(Color.white);
         btnExcluir.setBackground(Color.white);
+        jScrollPane1.getViewport().setBackground(new java.awt.Color(170, 195, 209));
         
         controller = new ClientesController(this);
         

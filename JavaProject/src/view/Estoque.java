@@ -33,6 +33,8 @@ public class Estoque extends javax.swing.JFrame {
         btnAlterar.setBackground(Color.white);
         btnExcluir.setBackground(Color.white);
         
+        jScrollPane5.getViewport().setBackground(new java.awt.Color(170, 195, 209));
+        
         controller = new EstoqueController(this);
         
         try {

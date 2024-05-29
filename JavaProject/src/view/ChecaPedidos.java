@@ -30,6 +30,8 @@ public class ChecaPedidos extends javax.swing.JFrame {
         TabelaPedidos.getTableHeader().setOpaque(false);
         TabelaPedidos.getTableHeader().setBackground(Color.red);
         
+        jScrollPane1.getViewport().setBackground(new java.awt.Color(170, 195, 209));
+        
         JTableHeader header = TabelaPedidos.getTableHeader();
         header.setBackground(Color.blue);  // Cor do cabeçalho
         header.setForeground(Color.black);      // Cor do texto do cabeçalho
