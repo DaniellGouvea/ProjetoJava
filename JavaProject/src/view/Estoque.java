@@ -28,6 +28,10 @@ public class Estoque extends javax.swing.JFrame {
      */
     public Estoque() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(161, 183, 198));
+        btnAdicionar.setBackground(Color.white);
+        btnAlterar.setBackground(Color.white);
+        btnExcluir.setBackground(Color.white);
         
         controller = new EstoqueController(this);
         
@@ -69,6 +73,7 @@ public class Estoque extends javax.swing.JFrame {
         mostraId = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Estoque");
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         jLabel1.setText("CADASTRO DE ESTOQUE");
@@ -159,7 +164,7 @@ public class Estoque extends javax.swing.JFrame {
         btnAdicionar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         btnAdicionar.setText("Adicionar");
         btnAdicionar.setAlignmentY(0.0F);
-        btnAdicionar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        btnAdicionar.setBorder(null);
         btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarActionPerformed(evt);
@@ -169,7 +174,7 @@ public class Estoque extends javax.swing.JFrame {
         btnAlterar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         btnAlterar.setText("Alterar");
         btnAlterar.setAlignmentY(0.0F);
-        btnAlterar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        btnAlterar.setBorder(null);
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarActionPerformed(evt);
@@ -179,7 +184,7 @@ public class Estoque extends javax.swing.JFrame {
         btnExcluir.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.setAlignmentY(0.0F);
-        btnExcluir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        btnExcluir.setBorder(null);
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
@@ -320,6 +325,8 @@ public class Estoque extends javax.swing.JFrame {
                 .addComponent(InsertQtdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        getAccessibleContext().setAccessibleName("Estoque");
 
         pack();
         setLocationRelativeTo(null);

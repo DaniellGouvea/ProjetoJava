@@ -8,6 +8,7 @@ import controller.TelaDeMenuController;
 import dao.ClienteDAO;
 import dao.Conexao;
 import dao.PedidoDAO;
+import java.awt.Color;
 import java.sql.Timestamp;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -37,6 +38,12 @@ public class TelaDeMenu extends javax.swing.JFrame {
      */
     public TelaDeMenu() {
         initComponents();
+        btnAdicionarItem.setBackground(Color.white);
+        btnEncerrarPedido.setBackground(Color.white);
+        btnInicarPedido.setBackground(Color.white);
+        
+        ComboBoxEstoque.setBackground(Color.white);
+        
         controller = new TelaDeMenuController(this);
         try {
             controller.adicionarAoComboBox(ComboBoxEstoque);
@@ -62,14 +69,15 @@ public class TelaDeMenu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaEstoqueMenu = new javax.swing.JTable();
-        AdicionarItem = new javax.swing.JButton();
+        btnAdicionarItem = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         TabelaPedidos = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        InicarPedido = new javax.swing.JButton();
-        EncerrarPedido = new javax.swing.JButton();
+        btnInicarPedido = new javax.swing.JButton();
+        btnEncerrarPedido = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         GerenciarMenu = new javax.swing.JMenu();
         Cliente = new javax.swing.JMenuItem();
@@ -86,9 +94,8 @@ public class TelaDeMenu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMaximumSize(new java.awt.Dimension(659, 528));
-        setMinimumSize(new java.awt.Dimension(714, 433));
-        setPreferredSize(new java.awt.Dimension(659, 528));
+        setMinimumSize(new java.awt.Dimension(700, 433));
+        setPreferredSize(new java.awt.Dimension(680, 520));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ComboBoxEstoque.setToolTipText("");
@@ -120,13 +127,13 @@ public class TelaDeMenu extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 497, 101));
 
-        AdicionarItem.setText("Adicionar Item");
-        AdicionarItem.addActionListener(new java.awt.event.ActionListener() {
+        btnAdicionarItem.setText("Adicionar Item");
+        btnAdicionarItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AdicionarItemActionPerformed(evt);
+                btnAdicionarItemActionPerformed(evt);
             }
         });
-        getContentPane().add(AdicionarItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, -1, -1));
+        getContentPane().add(btnAdicionarItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setText("Tabela Do Estoque");
@@ -149,21 +156,25 @@ public class TelaDeMenu extends javax.swing.JFrame {
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 497, 101));
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(431, 106, -1, -1));
 
-        InicarPedido.setText("Iniciar Pedido");
-        InicarPedido.addActionListener(new java.awt.event.ActionListener() {
+        btnInicarPedido.setText("Iniciar Pedido");
+        btnInicarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InicarPedidoActionPerformed(evt);
+                btnInicarPedidoActionPerformed(evt);
             }
         });
-        getContentPane().add(InicarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, -1, -1));
+        getContentPane().add(btnInicarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, -1, -1));
 
-        EncerrarPedido.setText("Encerrar Pedido");
-        EncerrarPedido.addActionListener(new java.awt.event.ActionListener() {
+        btnEncerrarPedido.setText("Encerrar Pedido");
+        btnEncerrarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EncerrarPedidoActionPerformed(evt);
+                btnEncerrarPedidoActionPerformed(evt);
             }
         });
-        getContentPane().add(EncerrarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 410, -1, -1));
+        getContentPane().add(btnEncerrarPedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 410, -1, -1));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/fundo.png"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -30, 1400, 740));
+        jLabel5.getAccessibleContext().setAccessibleName("Menu");
 
         GerenciarMenu.setText("Gerenciar");
         GerenciarMenu.setToolTipText("");
@@ -218,7 +229,7 @@ public class TelaDeMenu extends javax.swing.JFrame {
                 
     }//GEN-LAST:event_ComboBoxEstoqueActionPerformed
 
-    private void AdicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarItemActionPerformed
+    private void btnAdicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarItemActionPerformed
         //controller.adicionarPedidoAoBancoPedido();
         
         try {
@@ -228,26 +239,26 @@ public class TelaDeMenu extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(TelaDeMenu.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_AdicionarItemActionPerformed
+    }//GEN-LAST:event_btnAdicionarItemActionPerformed
 
     private void TabelaEstoqueMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TabelaEstoqueMenuMouseClicked
         //controller.adicionarItemPedidoAoBanco();
     }//GEN-LAST:event_TabelaEstoqueMenuMouseClicked
 
-    private void InicarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicarPedidoActionPerformed
+    private void btnInicarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInicarPedidoActionPerformed
         controller.adicionarPedidoAoBancoPedido();
         controller.limparTabela(TabelaPedidos);
         //LocalDateTime agora = LocalDateTime.now();
         //controller.TestePegaPedido();
         
-    }//GEN-LAST:event_InicarPedidoActionPerformed
+    }//GEN-LAST:event_btnInicarPedidoActionPerformed
 
-    private void EncerrarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EncerrarPedidoActionPerformed
+    private void btnEncerrarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncerrarPedidoActionPerformed
         controller.adicionarPedidoAoBancoPedido();
         controller.limparTabela(TabelaPedidos);
         ComboBoxEstoque.setSelectedIndex(0);
         JOptionPane.showMessageDialog(null, "Pedido Finalizado");
-    }//GEN-LAST:event_EncerrarPedidoActionPerformed
+    }//GEN-LAST:event_btnEncerrarPedidoActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         new ChecaPedidos().setVisible(true);
@@ -338,20 +349,21 @@ public class TelaDeMenu extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AdicionarItem;
     private javax.swing.JMenuItem Cliente;
     private javax.swing.JComboBox<String> ComboBoxEstoque;
-    private javax.swing.JButton EncerrarPedido;
     private javax.swing.JMenuItem Estoque;
     private javax.swing.JMenu GerenciarMenu;
-    private javax.swing.JButton InicarPedido;
     private javax.swing.JTable TabelaEstoqueMenu;
     private javax.swing.JTable TabelaPedidos;
+    private javax.swing.JButton btnAdicionarItem;
+    private javax.swing.JButton btnEncerrarPedido;
+    private javax.swing.JButton btnInicarPedido;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;

@@ -31,7 +31,9 @@ public class TelaDeLogin extends javax.swing.JFrame {
      */
     public TelaDeLogin() {
         initComponents();
-        getContentPane().setBackground(new java.awt.Color(204, 204, 255));
+        getContentPane().setBackground(new java.awt.Color(161, 183, 198));//(204, 204, 255)
+        Logar.setBackground(Color.white);
+        Cadastrar.setBackground(Color.white);
         controller = new TelaDeLoginController(this);
 
     }
@@ -66,7 +68,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
 
         Login.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         Login.setText("Login");
-        getContentPane().add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 100, -1));
+        getContentPane().add(Login, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, 100, -1));
 
         InsertEmail.setForeground(new java.awt.Color(153, 153, 153));
         InsertEmail.setText("Email");
@@ -83,7 +85,7 @@ public class TelaDeLogin extends javax.swing.JFrame {
                 InsertEmailActionPerformed(evt);
             }
         });
-        getContentPane().add(InsertEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 300, -1));
+        getContentPane().add(InsertEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 300, -1));
 
         InsertSenha.setForeground(new java.awt.Color(153, 153, 153));
         InsertSenha.setText("Senha");
@@ -102,14 +104,14 @@ public class TelaDeLogin extends javax.swing.JFrame {
                 InsertSenhaActionPerformed(evt);
             }
         });
-        getContentPane().add(InsertSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 300, -1));
+        getContentPane().add(InsertSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 300, -1));
 
         SeuEmail.setText("Seu Email");
-        getContentPane().add(SeuEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+        getContentPane().add(SeuEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
 
         SuaSenha.setText("Sua Senha");
         SuaSenha.setToolTipText("");
-        getContentPane().add(SuaSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+        getContentPane().add(SuaSenha, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
 
         Logar.setText("Logar");
         Logar.addActionListener(new java.awt.event.ActionListener() {
@@ -117,9 +119,9 @@ public class TelaDeLogin extends javax.swing.JFrame {
                 LogarActionPerformed(evt);
             }
         });
-        getContentPane().add(Logar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 300, 30));
+        getContentPane().add(Logar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 300, 30));
 
-        Footer.setBackground(new java.awt.Color(153, 153, 255));
+        Footer.setBackground(new java.awt.Color(170, 195, 209));
 
         Cadastrar.setText("Cadastrar");
         Cadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -136,23 +138,23 @@ public class TelaDeLogin extends javax.swing.JFrame {
         FooterLayout.setHorizontalGroup(
             FooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FooterLayout.createSequentialGroup()
-                .addContainerGap(183, Short.MAX_VALUE)
+                .addContainerGap(185, Short.MAX_VALUE)
                 .addComponent(SemConta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Cadastrar)
-                .addGap(9, 9, 9))
+                .addGap(17, 17, 17))
         );
         FooterLayout.setVerticalGroup(
             FooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FooterLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(FooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cadastrar)
                     .addComponent(SemConta))
-                .addGap(17, 17, 17))
+                .addGap(26, 26, 26))
         );
 
-        getContentPane().add(Footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 410, 60));
+        getContentPane().add(Footer, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 420, 70));
 
         pack();
         setLocationRelativeTo(null);

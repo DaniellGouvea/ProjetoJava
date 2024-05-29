@@ -5,11 +5,15 @@
 package view;
 
 import controller.ChecaPedidosController;
+import java.awt.Color;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.JTableHeader;
 
 
 public class ChecaPedidos extends javax.swing.JFrame {
@@ -18,6 +22,19 @@ public class ChecaPedidos extends javax.swing.JFrame {
     
     public ChecaPedidos() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(161, 183, 198));
+        VerificarBtn.setBackground(Color.white);
+        
+        JcomboClientes.setBackground(Color.white);
+        
+        TabelaPedidos.getTableHeader().setOpaque(false);
+        TabelaPedidos.getTableHeader().setBackground(Color.red);
+        
+        JTableHeader header = TabelaPedidos.getTableHeader();
+        header.setBackground(Color.blue);  // Cor do cabeçalho
+        header.setForeground(Color.black);      // Cor do texto do cabeçalho
+        
+        
         controller = new ChecaPedidosController(this);
         try {
             controller.adicionarAoComboBox(JcomboClientes);
@@ -38,12 +55,14 @@ public class ChecaPedidos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaPedidos = new javax.swing.JTable();
         JcomboClientes = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        VerificarBtn = new javax.swing.JButton();
         Texto = new javax.swing.JLabel();
         VoltarTela = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Pedidos");
 
+        TabelaPedidos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         TabelaPedidos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -61,10 +80,10 @@ public class ChecaPedidos extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Verificar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        VerificarBtn.setText("Verificar");
+        VerificarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                VerificarBtnActionPerformed(evt);
             }
         });
 
@@ -82,34 +101,38 @@ public class ChecaPedidos extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
+                        .addComponent(VoltarTela, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Texto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(JcomboClientes, 0, 255, Short.MAX_VALUE))
                         .addGap(33, 33, 33)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(VoltarTela, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(VerificarBtn)))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(VoltarTela, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JcomboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JcomboClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(VerificarBtn)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(VoltarTela, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(Texto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(50, 50, 50)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(125, 125, 125))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
+
+        getAccessibleContext().setAccessibleName("Pedidos");
 
         pack();
         setLocationRelativeTo(null);
@@ -119,7 +142,7 @@ public class ChecaPedidos extends javax.swing.JFrame {
        
     }//GEN-LAST:event_JcomboClientesActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void VerificarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VerificarBtnActionPerformed
         try {
             controller.ChamaPedidos();
             controller.adicionarATabela(TabelaPedidos);
@@ -137,7 +160,7 @@ public class ChecaPedidos extends javax.swing.JFrame {
                 System.out.println("Caractere não encontrado na string.");
             }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_VerificarBtnActionPerformed
 
     private void VoltarTelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VoltarTelaMouseClicked
 
@@ -203,8 +226,8 @@ public class ChecaPedidos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> JcomboClientes;
     private javax.swing.JTable TabelaPedidos;
     private javax.swing.JLabel Texto;
+    private javax.swing.JButton VerificarBtn;
     private javax.swing.JLabel VoltarTela;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

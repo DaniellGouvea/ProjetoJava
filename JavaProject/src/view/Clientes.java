@@ -30,6 +30,10 @@ public class Clientes extends javax.swing.JFrame {
      */
     public Clientes() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(161, 183, 198));
+        btnAdicionar.setBackground(Color.white);
+        btnAlterar.setBackground(Color.white);
+        btnExcluir.setBackground(Color.white);
         
         controller = new ClientesController(this);
         
@@ -70,12 +74,13 @@ public class Clientes extends javax.swing.JFrame {
         TabelaClientes = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Clientes");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         btnExcluir.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.setAlignmentY(0.0F);
-        btnExcluir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        btnExcluir.setBorder(null);
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExcluirActionPerformed(evt);
@@ -178,7 +183,7 @@ public class Clientes extends javax.swing.JFrame {
         btnAdicionar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         btnAdicionar.setText("Adicionar");
         btnAdicionar.setAlignmentY(0.0F);
-        btnAdicionar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        btnAdicionar.setBorder(null);
         btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdicionarActionPerformed(evt);
@@ -188,7 +193,7 @@ public class Clientes extends javax.swing.JFrame {
         btnAlterar.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         btnAlterar.setText("Alterar");
         btnAlterar.setAlignmentY(0.0F);
-        btnAlterar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        btnAlterar.setBorder(null);
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarActionPerformed(evt);
@@ -334,6 +339,9 @@ public class Clientes extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(34, 34, 34))
         );
+
+        getAccessibleContext().setAccessibleName("Clientes");
+        getAccessibleContext().setAccessibleDescription("");
 
         pack();
         setLocationRelativeTo(null);
